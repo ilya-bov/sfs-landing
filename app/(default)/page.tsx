@@ -369,9 +369,10 @@ export default function Home() {
                   style={{ paddingBottom: "62.5%", height: 0 }}
                 >
                   <iframe
-                    src="https://www.loom.com/embed/02664586dfd8436b85cb8bf2f4a42ac8?sid=e0cde520-05ef-4bc0-83b5-ec25c5d74d72"
+                    src="https://www.youtube.com/embed/i8zldj-tHGI"
                     frameBorder="0"
                     allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     className="absolute top-0 left-0 w-full h-full rounded-xl"
                   ></iframe>
                 </div>
