@@ -401,9 +401,9 @@ export default function Home() {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   data-lucide="sparkles"
                   className="lucide lucide-sparkles w-4 h-4 text-white/80"
                 >
@@ -520,7 +520,7 @@ const ContractCurlBlock = memo(function ContractCurlBlock() {
         <div class="rounded-2xl border border-white/10 bg-white/5 p-4 h-full">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="terminal" class="lucide lucide-terminal w-4 h-4 text-white/80"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="terminal" class="lucide lucide-terminal w-4 h-4 text-white/80"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
               <h3 class="text-xl font-semibold tracking-tight text-white">API+AI First</h3>
             </div>
             <span class="text-[11px] text-white/60">curl</span>
@@ -964,7 +964,7 @@ const StackSection = memo(function StackSection() {
             __html: `
         <div class="bg-white/5 border-white/10 border rounded-2xl pt-4 pr-4 pb-4 pl-4 h-full">
   <div class="flex items-center gap-2">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles w-4 h-4 text-white/80"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="sparkles" class="lucide lucide-sparkles w-4 h-4 text-white/80"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path><path d="M20 2v4"></path><path d="M22 4h-4"></path><circle cx="4" cy="20" r="2"></circle></svg>
     <h3 class="text-xl font-semibold tracking-tight text-white">eSignature Features</h3>
   </div>
   <div class="mt-3 space-y-4">
@@ -1144,7 +1144,7 @@ const StackSection = memo(function StackSection() {
             __html: `
         <div class="bg-white/5 border-white/10 border rounded-2xl pt-4 pr-4 pb-4 pl-4 h-full">
           <div class="flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" data-lucide="workflow" class="lucide lucide-workflow w-4 h-4"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="workflow" class="lucide lucide-workflow w-4 h-4"><rect width="8" height="8" x="3" y="3" rx="2"></rect><path d="M7 11v4a2 2 0 0 0 2 2h4"></path><rect width="8" height="8" x="13" y="13" rx="2"></rect></svg>
 
             <h3 class="text-xl font-semibold tracking-tight text-white">React Components</h3>
           </div>
@@ -1164,7 +1164,7 @@ const StackSection = memo(function StackSection() {
                 .piece-4:hover .tile{fill:rgba(251,191,36,.08)}
                 .hit{fill:transparent}
               </style>
-              <g stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <g strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
                 <!-- piece 1 -->
                 <g class="piece piece-1">
                   <rect class="hit" x="18" y="18" width="114" height="59" rx="12"/>
@@ -1195,7 +1195,7 @@ const StackSection = memo(function StackSection() {
                 </g>
               </g>
               <!-- connector hints -->
-              <g stroke="rgba(255,255,255,0.25)" stroke-width="1" fill="none">
+              <g stroke="rgba(255,255,255,0.25)" strokeWidth="1" fill="none">
                 <path d="M135 48h12"/>
                 <path d="M205 80v5"/>
                 <path d="M75 28v10"/>
@@ -1233,7 +1233,7 @@ const StackSection = memo(function StackSection() {
         <div class="rounded-2xl border border-white/10 bg-white/5 p-4 h-full">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-4 h-4 text-white/80" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="w-4 h-4 text-white/80" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
                 <polygon points="12 2.5 21.5 21.5 2.5 21.5" fill="none" stroke="currentColor"></polygon>
               </svg>
               <h3 class="text-xl font-semibold tracking-tight text-white">Webhooks</h3>
