@@ -12,6 +12,11 @@ export const metadata = {
   title: "Sendforsign",
   description:
     "Flexible, embeddable, AI-driven and API-first, Sendforsign makes it easy to eSign and build the exact contract automations your business needs.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -20,8 +25,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        <Script
+          id="theme-script"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme') || 'dark';
+                  if (theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <Script
           id="hotjar"
           strategy="afterInteractive"
@@ -40,7 +63,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} bg-gray-50 font-inter tracking-tight text-gray-900 antialiased`}
+        className={`${inter.variable} bg-background text-foreground font-inter tracking-tight antialiased`}
       >
         <div className="flex min-h-screen flex-col overflow-hidden supports-[overflow:clip]:overflow-clip">
           {children}

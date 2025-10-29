@@ -9,7 +9,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
         <div
           className={`grid gap-10 py-8 sm:grid-cols-12 md:py-12 ${
             border
-              ? "border-t [border-image:linear-gradient(to_right,transparent,var(--color-slate-200),transparent)1]"
+              ? "border-t border-border"
               : ""
           }`}
         >
@@ -18,21 +18,21 @@ export default function Footer({ border = false }: { border?: boolean }) {
             <div>
               <Logo />
             </div>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-muted-foreground">
               © 2025 • Sendforsign, Inc. • Designed with love
             </p>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-muted-foreground">
               1111B S Governors Ave STE 7848 Dover, DE 19904
             </p>
           </div>
 
           {/* 2nd block */}
           <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium text-white">Company</h3>
+            <h3 className="text-sm font-medium text-foreground">Company</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://about.sendforsign.com/about/vision"
                   target="_blank"
                 >
@@ -41,7 +41,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               </li>
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://sendforsign.com/changelog"
                   target="_blank"
                 >
@@ -50,7 +50,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               </li>
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://about.sendforsign.com/introduction"
                   target="_blank"
                 >
@@ -59,7 +59,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               </li>
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://sendforsign.com/blog"
                   target="_blank"
                 >
@@ -71,11 +71,11 @@ export default function Footer({ border = false }: { border?: boolean }) {
 
           {/* 2nd block */}
           <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium text-white">Product</h3>
+            <h3 className="text-sm font-medium text-foreground">Product</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://about.sendforsign.com/about/compliance"
                   target="_blank"
                 >
@@ -84,7 +84,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               </li>
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://about.sendforsign.com/usecase/firstdoc"
                   target="_blank"
                 >
@@ -93,7 +93,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               </li>
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://about.sendforsign.com/usecase/firsttemplate"
                   target="_blank"
                 >
@@ -105,11 +105,11 @@ export default function Footer({ border = false }: { border?: boolean }) {
 
           {/* 2nd block */}
           <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium text-white">More</h3>
+            <h3 className="text-sm font-medium text-foreground">More</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://about.sendforsign.com/about/termsandconditions"
                   target="_blank"
                 >
@@ -118,7 +118,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               </li>
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://about.sendforsign.com/about/privacypolicy"
                   target="_blank"
                 >
@@ -130,11 +130,11 @@ export default function Footer({ border = false }: { border?: boolean }) {
 
            {/* 2nd block */}
            <div className="space-y-2 sm:col-span-6 md:col-span-3 lg:col-span-2">
-            <h3 className="text-sm font-medium text-white">Social</h3>
+            <h3 className="text-sm font-medium text-foreground">Social</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://www.linkedin.com/company/sendforsign/about/"
                   target="_blank"
                 >
@@ -143,7 +143,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               </li>
               <li>
                 <Link
-                  className="text-gray-400 transition hover:text-gray-600"
+                  className="text-muted-foreground transition hover:text-foreground"
                   href="https://www.youtube.com/@Sendforsign/videos"
                   target="_blank"
                 >
