@@ -16,7 +16,7 @@ export default function Header() {
             <li>
               <Link
                 target="_blank"
-                href="https://app.sendforsign.com/"
+                href="https://accounts.sendforsign.com/sign-up"
                 className="btn-sm bg-gray-800 text-gray-200 shadow-sm hover:bg-gray-900"
               >
                 Get Started

@@ -144,7 +144,7 @@ export default function Home() {
         <div className="mt-12 flex flex-col sm:flex-row gap-4">
           <a
             target="_blank"
-            href="https://app.sendforsign.com/"
+            href="https://accounts.sendforsign.com/sign-up"
             className="px-8 py-3 bg-white text-black font-medium rounded-full hover:bg-gray-200 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Get Started
