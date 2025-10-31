@@ -42,7 +42,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://sendforsign.com/changelog"
+                  href="https://about.sendforsign.com/changelog/"
                   target="_blank"
                 >
                   Changelog
@@ -60,7 +60,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://sendforsign.com/blog"
+                  href="https://about.sendforsign.com/blog/"
                   target="_blank"
                 >
                   Blog
