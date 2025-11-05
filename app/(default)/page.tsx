@@ -445,7 +445,7 @@ export default function Home() {
             </div>
 
             <div className="lg:col-span-7 rounded-2xl border border-white/10 bg-gradient-to-b from-gray-950 to-black p-5">
-              <div className="flex items-center justify-between">
+              {/* <div className="flex items-center justify-between">
                 <div className="inline-flex items-center gap-2 text-xs px-2 py-1 rounded-md bg-white/5 border border-white/10">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -467,7 +467,7 @@ export default function Home() {
                     +12% LTV Growht After Implementation
                   </span>
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-4 grid grid-cols-2 gap-3">
                 <div className="shrink-0">

@@ -419,9 +419,6 @@
   .z-20 {
     z-index: 20;
   }
-  .z-30 {
-    z-index: 30;
-  }
   .z-50 {
     z-index: 50;
   }
@@ -1169,9 +1166,6 @@
       background-color: color-mix(in oklab, var(--background) 50%, transparent);
     }
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
   .bg-black\/20 {
     background-color: color-mix(in srgb, #000 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1255,9 +1249,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-emerald-500) 20%, transparent);
     }
-  }
-  .bg-gray-50 {
-    background-color: var(--color-gray-50);
   }
   .bg-gray-800 {
     background-color: var(--color-gray-800);
@@ -1776,9 +1767,6 @@
   .text-amber-400 {
     color: var(--color-amber-400);
   }
-  .text-black {
-    color: var(--color-black);
-  }
   .text-blue-200 {
     color: var(--color-blue-200);
   }
@@ -2194,9 +2182,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       border-image: linear-gradient(to right,transparent,color-mix(in oklab, var(--color-slate-700) 70%, transparent),transparent)1;
     }
-  }
-  .\[border-image\:linear-gradient\(to_right\,transparent\,var\(--color-slate-200\)\,transparent\)1\] {
-    border-image: linear-gradient(to right,transparent,var(--color-slate-200),transparent)1;
   }
   .\*\:relative {
     :is(& > *) {
@@ -2668,20 +2653,6 @@
       }
     }
   }
-  .hover\:bg-gray-200 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-200);
-      }
-    }
-  }
-  .hover\:bg-gray-900 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-gray-900);
-      }
-    }
-  }
   .hover\:bg-primary\/90 {
     &:hover {
       @media (hover: hover) {
@@ -2746,13 +2717,6 @@
     &:hover {
       @media (hover: hover) {
         color: var(--foreground);
-      }
-    }
-  }
-  .hover\:text-gray-600 {
-    &:hover {
-      @media (hover: hover) {
-        color: var(--color-gray-600);
       }
     }
   }
@@ -3055,11 +3019,6 @@
       font-size: var(--text-lg);
       line-height: var(--tw-leading, var(--text-lg--line-height));
       letter-spacing: var(--tw-tracking, var(--text-lg--letter-spacing));
-    }
-  }
-  .md\:top-6 {
-    @media (width >= 48rem) {
-      top: calc(var(--spacing) * 6);
     }
   }
   .md\:right-12 {
@@ -3433,12 +3392,6 @@
   .dark\:text-muted-foreground {
     &:is(.dark *) {
       color: var(--muted-foreground);
-    }
-  }
-  .dark\:shadow-none {
-    &:is(.dark *) {
-      --tw-shadow: 0 0 #0000;
-      box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
     }
   }
   .dark\:shadow-zinc-950\/50 {
