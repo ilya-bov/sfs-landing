@@ -65,13 +65,14 @@ export default function Home() {
       onClick={handleClick}
     >
       {/* Spline 3D background */}
-      <div className="fixed inset-0 -z-1">
+      {/* Important: disable pointer events so a full-screen cross-origin iframe can't hijack clicks */}
+      <div className="fixed inset-0 z-[-1] pointer-events-none">
         <iframe
           src="https://my.spline.design/thresholddarkambientui-v0gkZCfi6zXm69kE0wccy70f/"
           frameBorder="0"
           width="100%"
           height="100%"
-          className="w-full h-full"
+          className="w-full h-full pointer-events-none"
           title="Spline 3D background"
         ></iframe>
       </div>
@@ -400,7 +401,7 @@ export default function Home() {
       {/* Our Clients */}
       <section
         id="analytics"
-        className="py-16 pt-40 relative -z-1"
+        className="py-16 pt-40 relative z-0"
         data-aos="zoom-y-out"
         data-aos-delay={100}
       >
