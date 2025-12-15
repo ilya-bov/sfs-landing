@@ -43,9 +43,6 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* TEMPORARILY DISABLED: Hotjar script - suspected source of malicious script injection
-            If the malicious script disappears after this, Hotjar account may be compromised.
-            Check Hotjar settings or contact Hotjar support.
         <Script
           id="hotjar"
           strategy="afterInteractive"
@@ -62,7 +59,6 @@ export default function RootLayout({
             `,
           }}
         />
-        */}
       </head>
       <body
         className={`${inter.variable} bg-background text-foreground font-inter tracking-tight antialiased`}
