@@ -47,6 +47,18 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, [forward, rotatingWords.length]);
 
+  // Spline 3D фон (~550 KB) грузим только на md+ экранах: на мобильных он
+  // съедал большую часть веса страницы и тормозил LCP
+  const [showSpline, setShowSpline] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setShowSpline(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   // Закрытие меню по клику вне меню
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (
@@ -65,15 +77,17 @@ export default function Home() {
       onClick={handleClick}
     >
       {/* Spline 3D background */}
-      <div className="fixed inset-0 -z-1">
-        <iframe
-          src="https://my.spline.design/thresholddarkambientui-v0gkZCfi6zXm69kE0wccy70f/"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-          className="w-full h-full"
-          title="Spline 3D background"
-        ></iframe>
+      <div className="fixed inset-0 -z-1 bg-[radial-gradient(ellipse_at_top,_#26262e_0%,_#0b0b0f_60%)]">
+        {showSpline && (
+          <iframe
+            src="https://my.spline.design/thresholddarkambientui-v0gkZCfi6zXm69kE0wccy70f/"
+            frameBorder="0"
+            width="100%"
+            height="100%"
+            className="w-full h-full"
+            title="Spline 3D background"
+          ></iframe>
+        )}
       </div>
 
       {/* Hero content */}
@@ -357,20 +371,13 @@ export default function Home() {
         </div>
       </section>
       {/* Hero video */}
-      <div
+      {/* <div
         className="-mx-0.5 flex justify-center items-center "
         data-aos="zoom-y-out"
         data-aos-delay={100}
       >
         <div className="mt-8 w-full flex justify-center items-center">
           <div className="relative rounded-2xl px-5 py-3 shadow-xl max-w-6xl w-full before:pointer-events-none before:absolute before:-inset-5 before:border-y before:[border-image:linear-gradient(to_right,transparent,--theme(--color-slate-300/.8),transparent)1] after:absolute after:-inset-5 after:-z-10 after:border-x after:[border-image:linear-gradient(to_bottom,transparent,--theme(--color-slate-300/.8),transparent)1]">
-            {/* <video
-              className="box-content rounded-2xl border-2 border-gray-50 max-w-full w-full h-auto"
-              src="https://www.ibillidi.com/wc.mp4"
-              loop
-              controls
-            /> */}
-            {/* Loom embed */}
             <div
               className="flex justify-center items-center"
               data-aos="zoom-y-out"
@@ -393,7 +400,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <StackSection />
 
@@ -473,7 +480,7 @@ export default function Home() {
                 <div className="shrink-0">
                   <Image
                     src="/images/client.avif"
-                    alt="Alex"
+                    alt="Alex, CEO at Maroo"
                     width={196}
                     height={196}
                     className="rounded-xl grayscale"

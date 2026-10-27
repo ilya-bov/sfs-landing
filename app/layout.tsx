@@ -1,4 +1,5 @@
 import "./css/style.css";
+import type { Metadata } from "next";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 
@@ -8,15 +9,79 @@ const inter = Inter({
   display: "swap",
 });
 
-export const metadata = {
-  title: "Sendforsign",
-  description:
-    "Flexible, embeddable, AI-driven and API-first, Sendforsign makes it easy to eSign and build the exact contract automations your business needs.",
+const SITE_URL = "https://sendforsign.com";
+const SITE_TITLE =
+  "Sendforsign — eSignature API and embedded contract workflows";
+const SITE_DESCRIPTION =
+  "API-first eSignature platform for SaaS and AI agents: generate contracts with AI, embed signing with React components, and automate approvals with webhooks.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_TITLE,
+    template: "%s | Sendforsign",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: "Sendforsign",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: "Sendforsign",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
     apple: "/favicon.svg",
   },
+};
+
+// Structured data for search engines (Organization + product + site)
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Sendforsign",
+      url: SITE_URL,
+      logo: `${SITE_URL}/favicon.svg`,
+      sameAs: [
+        "https://www.linkedin.com/company/sendforsign/",
+        "https://www.youtube.com/@Sendforsign",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: "Sendforsign",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "Sendforsign",
+      url: SITE_URL,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      description: SITE_DESCRIPTION,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -27,6 +92,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
