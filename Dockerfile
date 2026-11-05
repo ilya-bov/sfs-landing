@@ -26,6 +26,9 @@ RUN if [ -f pnpm-lock.yaml ]; then \
 COPY . .
 
 # Собираем Next.js приложение
+# --no-network-family-autoselection: next/font downloads fail in Docker on hosts
+# whose IPv6 path is broken (the KZ box); harmless elsewhere.
+ENV NODE_OPTIONS="--no-network-family-autoselection"
 RUN pnpm run build
 
 # Production image
