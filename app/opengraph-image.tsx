@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Sendforsign — eSignature API and embedded contract workflows";
+export const alt =
+  "Sendforsign — the contracts layer for products that build AI agents";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -34,11 +35,11 @@ export default function OpengraphImage() {
           <div style={{ fontSize: 40, fontWeight: 600 }}>Sendforsign</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-          <div style={{ fontSize: 76, fontWeight: 600, lineHeight: 1.05 }}>
-            eSignature for your Business and AI Agent
+          <div style={{ fontSize: 68, fontWeight: 600, lineHeight: 1.05 }}>
+            The contracts layer for products that build AI agents
           </div>
           <div style={{ fontSize: 32, color: "#a1a1aa" }}>
-            API-first contracts, embedded signing, AI assistant, webhooks
+            Templates, field roles, e-signature, webhooks. REST API + MCP.
           </div>
         </div>
         <div style={{ fontSize: 28, color: "#71717a" }}>sendforsign.com</div>

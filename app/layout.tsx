@@ -11,9 +11,9 @@ const inter = Inter({
 
 const SITE_URL = "https://sendforsign.com";
 const SITE_TITLE =
-  "Sendforsign — eSignature API and embedded contract workflows";
+  "Sendforsign — the contracts layer for products that build AI agents";
 const SITE_DESCRIPTION =
-  "API-first eSignature platform for SaaS and AI agents: generate contracts with AI, embed signing with React components, and automate approvals with webhooks.";
+  "Contracts API and MCP server for AI agents: build contracts from templates, let the agent and the counterparty fill their own fields, send for e-signature and get a webhook when signed. White-label and multi-tenant, with an agent audit log.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -77,8 +77,24 @@ const jsonLd = {
       name: "Sendforsign",
       url: SITE_URL,
       applicationCategory: "BusinessApplication",
+      applicationSubCategory: "Contract management and e-signature API",
       operatingSystem: "Web",
       description: SITE_DESCRIPTION,
+      featureList: [
+        "Contract templates with per-recipient field roles",
+        "REST API and remote MCP server for AI agents",
+        "Embedded, white-label, multi-tenant signing",
+        "Agent modes, send confirmations and audit log",
+        "Webhooks for contract events",
+        "Simple electronic signatures for the EU and the US",
+      ],
+      offers: {
+        "@type": "Offer",
+        name: "Sandbox",
+        price: "0",
+        priceCurrency: "USD",
+        description: "Free sandbox covering the full create, send and sign flow.",
+      },
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
   ],

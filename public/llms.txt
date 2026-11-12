@@ -1,0 +1,15 @@
+# Sendforsign
+
+> The contracts layer for products that build AI agents. An agent builds a contract from a template, fills in its own fields, lets each recipient fill theirs, sends it for e-signature and gets a webhook when it is signed. White-label and multi-tenant, with agent modes, send confirmations and an audit log. Simple electronic signatures for the EU and the US.
+
+## Docs
+
+- [AI agents](https://about.sendforsign.com/ai-agents/overview): MCP server quickstart (Claude, ChatGPT, Cursor, Claude Code), headers, tools, modes and audit log
+- [API introduction](https://about.sendforsign.com/api-reference/introapi): authentication with X-Sendforsign-Key, clientKey and userKey
+- [Docs home](https://about.sendforsign.com/introduction)
+
+## Endpoints
+
+- REST API: https://api.sendforsign.com/api/
+- MCP server (early access, Streamable HTTP): https://api.sendforsign.com/mcp
+- App and API keys: https://app.sendforsign.com
