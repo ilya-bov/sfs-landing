@@ -6,12 +6,12 @@ import { Button } from '@/components/ui/button'
 import React from 'react'
 import { cn } from '@/lib/utils'
 const menuItems = [
+    { name: 'AI agents', href: '/#agents' },
     { name: 'API', href: '/esignature-api' },
     { name: 'Embedded signing', href: '/embedded-esignature' },
     { name: 'AI contracts', href: '/ai-contract-generation' },
     { name: 'Documentation', href: 'https://about.sendforsign.com/introduction' },
-    { name: 'About', href: 'https://about.sendforsign.com/about/vision' },
-    // { name: 'Pricing', href: '#pricing' },
+    { name: 'Pricing', href: '/#pricing' },
     // { name: 'About', href: '#about' },
 ]
 

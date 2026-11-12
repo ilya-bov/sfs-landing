@@ -2,50 +2,19 @@
 import { useEffect, useMemo, useRef, useState, memo } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import {
+  AgentFlowSection,
+  APP_URL,
+  DifferentiatorsSection,
+  DOCS_AGENTS_URL,
+  PricingSection,
+  WorksWithSection,
+} from "./agent-sections";
 
 export default function Home() {
   // Для управления мобильным меню
   const menuRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
-
-  // Rotating headline words
-  const rotatingWords = useMemo(() => ["AI Agent", "Product", "Business"], []);
-  const [wordIndex, setWordIndex] = useState(0);
-  const [forward, setForward] = useState(true);
-  const [isWordVisible, setIsWordVisible] = useState(true);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      // fade out
-      setIsWordVisible(false);
-
-      const timeoutId = setTimeout(() => {
-        // update index in ping-pong manner
-        setWordIndex((prev) => {
-          if (forward) {
-            if (prev === rotatingWords.length - 1) {
-              setForward(false);
-              return prev - 1;
-            }
-            return prev + 1;
-          } else {
-            if (prev === 0) {
-              setForward(true);
-              return prev + 1;
-            }
-            return prev - 1;
-          }
-        });
-
-        // fade in
-        setIsWordVisible(true);
-      }, 300);
-
-      return () => clearTimeout(timeoutId);
-    }, 2000);
-
-    return () => clearInterval(intervalId);
-  }, [forward, rotatingWords.length]);
 
   // Spline 3D фон (~550 KB) грузим только на md+ экранах: на мобильных он
   // съедал большую часть веса страницы и тормозил LCP
@@ -134,27 +103,13 @@ export default function Home() {
           Sendforsign
         </p>
         <h1 className="md:text-6xl max-w-4xl text-neutral-100 leading-tight text-4xl font-medium tracking-tighter">
-          eSignature<br></br>
-          for your{" "}
-          <span className="inline-block relative align-baseline">
-            {/* Reserve width to avoid layout shift */}
-            <span className="invisible select-none">Business</span>
-            <span
-              className={
-                "absolute left-0 top-0 transition-all duration-500 will-change-transform " +
-                (isWordVisible
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 -translate-y-2")
-              }
-            >
-              {rotatingWords[wordIndex]}
-            </span>
-          </span>
+          The contracts layer for products that build AI agents
         </h1>
         <p className="md:text-xl max-w-2xl text-lg text-neutral-300 mt-6">
-          Sendforsign is the platform to roll out AI contracts to all of your
-          teams and clients. Plus, enabling developers to build, embed and
-          deploy the most custom eSign workflows.
+          Your agent builds a contract from a template, fills in its fields,
+          sends it for signature and gets a webhook when it is signed. All
+          under your product&apos;s brand, with a log of what the agent did and
+          on whose behalf.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row gap-4">
           <Button
@@ -163,11 +118,8 @@ export default function Home() {
             size="lg"
             className="rounded-full shadow-lg hover:shadow-xl"
           >
-            <a
-              target="_blank"
-              href="https://accounts.sendforsign.com/sign-up"
-            >
-              Get Started
+            <a target="_blank" rel="noopener" href={APP_URL}>
+              Get API key
             </a>
           </Button>
           <Button
@@ -176,15 +128,18 @@ export default function Home() {
             size="lg"
             className="rounded-full shadow-lg hover:shadow-xl"
           >
-            <a
-              target="_blank"
-              href="https://about.sendforsign.com/api-reference/introapi"
-            >
-              Documentation
+            <a target="_blank" rel="noopener" href={DOCS_AGENTS_URL}>
+              Docs for AI agents
             </a>
           </Button>
         </div>
+        <p className="mt-6 text-sm text-neutral-500">
+          REST API, MCP server and React components. Free sandbox.
+        </p>
       </div>
+      <AgentFlowSection />
+      <WorksWithSection />
+      <DifferentiatorsSection />
       {/* Logos + Stats */}
       <section
         className="relative z-10 py-16"
@@ -526,6 +481,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <PricingSection />
 
       {/* Feature Rotator (Sendforsign) */}
       <FeatureRotator />
