@@ -11,9 +11,9 @@ const inter = Inter({
 
 const SITE_URL = "https://sendforsign.com";
 const SITE_TITLE =
-  "Sendforsign — the contracts layer for products that build AI agents";
+  "Sendforsign — Your agent drafts. People sign.";
 const SITE_DESCRIPTION =
-  "Contracts API and MCP server for AI agents: build contracts from templates, let the agent and the counterparty fill their own fields, send for e-signature and get a webhook when signed. White-label and multi-tenant, with an agent audit log.";
+  "Contracts, e-signature and an audit trail for AI agents, inside your product, via MCP or API. The agent drafts from your templates and fills its fields; people fill theirs and sign. White-label and multi-tenant.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

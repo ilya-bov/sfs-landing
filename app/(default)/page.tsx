@@ -2,13 +2,15 @@
 import { useEffect, useMemo, useRef, useState, memo } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Terminal } from "lucide-react";
 import {
-  AgentFlowSection,
   APP_URL,
   DifferentiatorsSection,
   DOCS_AGENTS_URL,
+  DOCS_MCP_QUICKSTART_URL,
+  IntegrationSection,
   PricingSection,
-  WorksWithSection,
+  PromptsSection,
 } from "./agent-sections";
 
 export default function Home() {
@@ -102,14 +104,15 @@ export default function Home() {
           </svg>
           Sendforsign
         </p>
+        {/* Alternative headlines to swap in:
+            "Contracts your AI agent can send"
+            "E-signature for AI agents, under your brand" */}
         <h1 className="md:text-6xl max-w-4xl text-neutral-100 leading-tight text-4xl font-medium tracking-tighter">
-          The contracts layer for products that build AI agents
+          Your agent drafts. People sign.
         </h1>
         <p className="md:text-xl max-w-2xl text-lg text-neutral-300 mt-6">
-          Your agent builds a contract from a template, fills in its fields,
-          sends it for signature and gets a webhook when it is signed. All
-          under your product&apos;s brand, with a log of what the agent did and
-          on whose behalf.
+          Contracts, e-signature and an audit trail for AI agents, inside your
+          product, via MCP or API.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row gap-4">
           <Button
@@ -137,9 +140,9 @@ export default function Home() {
           REST API, MCP server and React components. Free sandbox.
         </p>
       </div>
-      <AgentFlowSection />
-      <WorksWithSection />
+      <IntegrationSection />
       <DifferentiatorsSection />
+      <PromptsSection />
       {/* Logos + Stats */}
       <section
         className="relative z-10 py-16"
@@ -490,41 +493,41 @@ export default function Home() {
   );
 }
 
-const ContractCurlBlock = memo(function ContractCurlBlock() {
+// AI+API (aiapi.sendforsign.com) is deprecated: agents use the MCP server and
+// the agent skill instead.
+const AgentConnectBlock = memo(function AgentConnectBlock() {
   return (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-4 h-full">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" data-lucide="terminal" class="lucide lucide-terminal w-4 h-4 text-white/80"><path d="M12 19h8"></path><path d="m4 17 6-6-6-6"></path></svg>
-              <h3 class="text-xl font-semibold tracking-tight text-white">API+AI First</h3>
-            </div>
-            <span class="text-[11px] text-white/60">curl</span>
-          </div>
-          <pre class="text-[12px] leading-relaxed overflow-auto whitespace-pre-wrap break-words text-white/90 bg-black/40 border-white/10 border rounded-xl mt-3 pt-3 pr-3 pb-3 pl-3" style="font-family: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas;">
-<code>
-<span class="text-emerald-300">curl</span> <span class="text-violet-300">-X</span> <span class="text-amber-200">POST</span> <span class="text-sky-300">'https://aiapi.sendforsign.com/webhook/aiapi'</span> \
-<br><span class="text-violet-300">-H</span> <span class="text-cyan-300">'X-Sendforsign-Key:</span> <span class="text-amber-200">YOUR_API_KEY</span><span class="text-cyan-300">'</span> \
-<br><span class="text-violet-300">-H</span> <span class="text-cyan-300">'clientKey:</span> <span class="text-amber-200">YOUR_CLIENT_KEY</span><span class="text-cyan-300">'</span> \
-<br><span class="text-violet-300">-H</span> <span class="text-cyan-300">'secretKey:</span> <span class="text-amber-200">YOUR_SECRET_KEY</span><span class="text-cyan-300">'</span> \
-<br><span class="text-violet-300">-H</span> <span class="text-cyan-300">'Content-Type:</span> <span class="text-amber-200">application/json</span><span class="text-cyan-300">'</span> \
-<br><span class="text-violet-300">-d</span> <span class="text-white">'{</span>
-&nbsp;&nbsp;<span class="text-sky-300">"message"</span><span class="text-white">:</span> <span class="text-white">"create a new contract from a template and add a recipient"</span>
-<span class="text-white">}'</span>
-</code>
-          </pre>
-  
-  <div class="mt-4 p-3 bg-black/30 rounded-lg border border-white/10">
-    <p class="text-xs text-white/70 leading-relaxed">
-      <span class="font-medium text-white/80">We provide</span> our users with the ability to simplify the API request structure, sending unified requests to Sendforsign’s MCP and receiving unified AI responses.
-    </p>
-  </div>
+    <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-4">
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <Terminal className="h-4 w-4 text-white/80" />
+          <h3 className="text-xl font-semibold tracking-tight text-white">
+            MCP + Agent skill
+          </h3>
         </div>
-        `,
-      }}
-    />
+        <span className="text-[11px] text-white/60">claude code</span>
+      </div>
+      <pre className="mt-3 overflow-x-auto rounded-xl border border-white/10 bg-black/40 p-3 font-mono text-[12px] leading-relaxed text-white/90">
+        <code>{`claude mcp add --transport http \\
+  sendforsign https://api.sendforsign.com/mcp \\
+  --header "X-Sendforsign-Key: YOUR_API_KEY"`}</code>
+      </pre>
+      <div className="mt-4 rounded-lg border border-white/10 bg-black/30 p-3">
+        <p className="text-xs leading-relaxed text-white/70">
+          <span className="font-medium text-white/80">Your agent</span> lists
+          templates, drafts contracts, fills fields and sends them for
+          signature. Works in Claude, ChatGPT, Cursor and any MCP client.{" "}
+          <a
+            href={DOCS_MCP_QUICKSTART_URL}
+            target="_blank"
+            rel="noopener"
+            className="underline underline-offset-2 hover:text-white"
+          >
+            MCP quickstart
+          </a>
+        </p>
+      </div>
+    </div>
   );
 });
 
@@ -568,12 +571,12 @@ function FeatureRotator() {
       },
       {
         key: "comments",
-        bullet: "Most flexible AI API",
+        bullet: "API and MCP for agents",
         accent: "amber",
         icon: "code",
         pillText: "Integrate",
         tailText: "seamlessly",
-        body: "The most flexible AI API on the market. Do anything with contracts directly from your backend with powerful customization options.",
+        body: "Do anything with contracts from your backend over REST, or let your AI agent do it through the MCP server.",
         description:
           "Integrate contract management directly into your backend. Full control and flexibility for any use case.",
         badges: [
@@ -986,7 +989,7 @@ const StackSection = memo(function StackSection() {
           }}
         />
 
-        <ContractCurlBlock />
+        <AgentConnectBlock />
 
         <div
           dangerouslySetInnerHTML={{

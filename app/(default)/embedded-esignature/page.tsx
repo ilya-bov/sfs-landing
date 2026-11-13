@@ -81,6 +81,10 @@ import { ContractEditor } from 'sendforsign';
       q: "Do the components work on mobile?",
       a: "Yes. They are optimized for desktop, tablet and mobile and support the latest versions of the major browsers.",
     },
+    {
+      q: "Can our AI agent prepare contracts for our users?",
+      a: "Yes. Your agent drafts and fills contracts through the MCP server or the API, in the tenant of each of your customers, and your users review and sign them in the embedded components.",
+    },
   ],
   docsLinks: [
     { label: "React components introduction", href: `${DOCS}/sdk/introsdk` },

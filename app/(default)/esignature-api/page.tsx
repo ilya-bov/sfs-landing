@@ -89,12 +89,17 @@ const content: SeoPageContent = {
       q: "Are signatures made with Sendforsign legally valid?",
       a: "Sendforsign provides Simple Electronic Signatures (SES), suitable for everyday agreements, with an audit trail of every action on the document.",
     },
+    {
+      q: "Can AI agents use the API?",
+      a: "Yes. The Sendforsign MCP server (in early access) exposes the same API as tools for Claude, ChatGPT, Cursor and any MCP client, with the same keys and permissions.",
+    },
   ],
   docsLinks: [
     { label: "API introduction", href: `${DOCS}/api-reference/introapi` },
     { label: "Send your first document", href: `${DOCS}/usecase/firstdoc` },
     { label: "Create contract", href: `${DOCS}/api-reference/contract/create` },
     { label: "Webhooks", href: `${DOCS}/api-reference/webhook/concept` },
+    { label: "MCP server for AI agents", href: `${DOCS}/ai-agents/mcp-quickstart` },
   ],
 };
 
