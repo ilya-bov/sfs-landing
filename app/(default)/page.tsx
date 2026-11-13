@@ -509,14 +509,16 @@ const AgentConnectBlock = memo(function AgentConnectBlock() {
       </div>
       <pre className="mt-3 overflow-x-auto rounded-xl border border-white/10 bg-black/40 p-3 font-mono text-[12px] leading-relaxed text-white/90">
         <code>{`claude mcp add --transport http \\
-  sendforsign https://api.sendforsign.com/mcp \\
-  --header "X-Sendforsign-Key: YOUR_API_KEY"`}</code>
+  sendforsign https://api.sendforsign.com/mcp
+
+# sign in once:
+/mcp`}</code>
       </pre>
       <div className="mt-4 rounded-lg border border-white/10 bg-black/30 p-3">
         <p className="text-xs leading-relaxed text-white/70">
           <span className="font-medium text-white/80">Your agent</span> lists
           templates, drafts contracts, fills fields and sends them for
-          signature. Works in Claude, ChatGPT, Cursor and any MCP client.{" "}
+          signature. One link and a sign-in in Claude, ChatGPT, Cursor or any MCP client.{" "}
           <a
             href={DOCS_MCP_QUICKSTART_URL}
             target="_blank"

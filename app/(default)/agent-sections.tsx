@@ -5,20 +5,21 @@ import {
   Bot,
   Braces,
   Check,
+  Code,
   Copy,
+  Download,
   FileCode,
-  FileText,
   Globe,
   Hexagon,
   Layers,
+  Link2,
+  LogIn,
   MessageSquare,
-  Monitor,
   MousePointerClick,
-  PenLine,
   ShieldCheck,
+  Sparkles,
   Terminal,
   Users,
-  Webhook,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -97,114 +98,168 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
 }
 
 // ---------------------------------------------------------------------------
-// Integration snippets. Kept in sync with sendforsign-docs ai-agents/mcp-quickstart.
+// Connecting an agent. Two ways:
+//  - sign-in (OAuth 2.1 + dynamic client registration): one URL, no keys;
+//  - API key headers, for integrators whose agents run server-side.
+// Header snippets are kept in sync with sendforsign-docs ai-agents/mcp-quickstart.
 // ---------------------------------------------------------------------------
+
+export const MCP_URL = "https://api.sendforsign.com/mcp";
+
+// Install link formats checked against the official docs (2026-11):
+// Cursor: cursor.com/docs/mcp/install-links -> name + base64(JSON config)
+// VS Code: code.visualstudio.com/api/extension-guides/ai/mcp -> urlencoded JSON with name
+const CURSOR_INSTALL_URL =
+  "cursor://anysphere.cursor-deeplink/mcp/install?name=sendforsign&config=eyJ1cmwiOiJodHRwczovL2FwaS5zZW5kZm9yc2lnbi5jb20vbWNwIn0=";
+const VSCODE_INSTALL_URL =
+  "vscode:mcp/install?%7B%22name%22%3A%22sendforsign%22%2C%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fapi.sendforsign.com%2Fmcp%22%7D";
+
+type Snippet = { file: string; code: string };
 
 type Integration = {
   id: string;
   label: string;
   icon: React.ComponentType<{ className?: string }>;
-  file: string;
-  code: string;
+  steps?: React.ReactNode[];
+  snippet?: Snippet;
+  install?: { label: string; href: string };
 };
 
-const INTEGRATIONS: Integration[] = [
+const UrlCode = () => (
+  <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-[12px] text-white">
+    {MCP_URL}
+  </code>
+);
+
+const OAUTH_INTEGRATIONS: Integration[] = [
+  {
+    id: "claude",
+    label: "Claude",
+    icon: MessageSquare,
+    steps: [
+      <>Settings → Connectors → Add custom connector</>,
+      <>
+        Paste <UrlCode />
+      </>,
+      <>Sign in to Sendforsign and pick what the agent may do</>,
+    ],
+  },
   {
     id: "claude-code",
     label: "Claude Code",
     icon: Terminal,
-    file: "terminal",
-    code: `claude mcp add --transport http sendforsign https://api.sendforsign.com/mcp \\
-  --header "X-Sendforsign-Key: YOUR_API_KEY" \\
-  --header "X-Sendforsign-Client-Key: YOUR_CLIENT_KEY"`,
-  },
-  {
-    id: "claude-desktop",
-    label: "Claude Desktop",
-    icon: Monitor,
-    file: "claude_desktop_config.json",
-    code: `{
-  "mcpServers": {
-    "sendforsign": {
-      "command": "npx",
-      "args": [
-        "-y", "mcp-remote", "https://api.sendforsign.com/mcp",
-        "--header", "X-Sendforsign-Key:\${SFS_KEY}",
-        "--header", "X-Sendforsign-Client-Key:\${SFS_CLIENT}",
-        "--header", "X-Sendforsign-Agent-Mode:draft"
-      ],
-      "env": {
-        "SFS_KEY": "YOUR_API_KEY",
-        "SFS_CLIENT": "YOUR_CLIENT_KEY"
-      }
-    }
-  }
-}`,
+    snippet: {
+      file: "terminal",
+      code: `claude mcp add --transport http sendforsign ${MCP_URL}
+
+# then, inside Claude Code, sign in:
+/mcp`,
+    },
   },
   {
     id: "cursor",
     label: "Cursor",
     icon: MousePointerClick,
-    file: ".cursor/mcp.json",
-    code: `{
-  "mcpServers": {
-    "sendforsign": {
-      "url": "https://api.sendforsign.com/mcp",
-      "headers": {
-        "X-Sendforsign-Key": "\${env:SENDFORSIGN_API_KEY}",
-        "X-Sendforsign-Client-Key": "\${env:SENDFORSIGN_CLIENT_KEY}",
-        "X-Sendforsign-Agent-Mode": "draft"
-      }
-    }
-  }
-}`,
+    install: { label: "Add to Cursor", href: CURSOR_INSTALL_URL },
+    steps: [
+      <>Click Add to Cursor and confirm the install</>,
+      <>Sign in to Sendforsign when Cursor asks</>,
+    ],
+  },
+  {
+    id: "vscode",
+    label: "VS Code",
+    icon: Code,
+    install: { label: "Add to VS Code", href: VSCODE_INSTALL_URL },
+    steps: [
+      <>Click Add to VS Code and review the server</>,
+      <>Install, then sign in to Sendforsign</>,
+    ],
+  },
+  {
+    id: "chatgpt",
+    label: "ChatGPT",
+    icon: Sparkles,
+    steps: [
+      <>Settings → Apps &amp; Connectors → turn on developer mode</>,
+      <>
+        Create a connector with <UrlCode />
+      </>,
+      <>Sign in to Sendforsign and pick what the agent may do</>,
+    ],
   },
   {
     id: "openai",
     label: "OpenAI Agents SDK",
     icon: Bot,
-    file: "agent.py",
-    code: `from agents import Agent, Runner
-from agents.mcp import MCPServerStreamableHttp
-
-async with MCPServerStreamableHttp(
-    name="sendforsign",
-    params={
-        "url": "https://api.sendforsign.com/mcp",
-        "headers": {
-            "X-Sendforsign-Key": os.environ["SENDFORSIGN_API_KEY"],
-            "X-Sendforsign-Client-Key": os.environ["SENDFORSIGN_CLIENT_KEY"],
-            "X-Sendforsign-Agent-Mode": "draft",
-        },
-    },
-) as sfs:
-    agent = Agent(name="Contracts", mcp_servers=[sfs])
-    result = await Runner.run(agent, "Draft an NDA for Acme Ltd.")`,
+    steps: [
+      <>
+        Point a hosted or Streamable HTTP MCP tool at <UrlCode />
+      </>,
+      <>OAuth 2.1 with dynamic client registration, no keys to manage</>,
+    ],
   },
   {
-    id: "mcp-json",
+    id: "any",
     label: "Any MCP client",
     icon: Braces,
-    file: "mcp.json",
-    code: `{
+    snippet: {
+      file: "mcp.json",
+      code: `{
   "mcpServers": {
     "sendforsign": {
       "type": "http",
-      "url": "https://api.sendforsign.com/mcp",
+      "url": "${MCP_URL}"
+    }
+  }
+}
+
+// OAuth 2.1 + dynamic client registration.
+// The client opens the Sendforsign sign-in on first use.`,
+    },
+  },
+];
+
+const KEY_INTEGRATIONS: Integration[] = [
+  {
+    id: "key-claude-code",
+    label: "Claude Code",
+    icon: Terminal,
+    snippet: {
+      file: "terminal",
+      code: `claude mcp add --transport http sendforsign ${MCP_URL} \\
+  --header "X-Sendforsign-Key: YOUR_API_KEY" \\
+  --header "X-Sendforsign-Client-Key: YOUR_CLIENT_KEY"`,
+    },
+  },
+  {
+    id: "key-json",
+    label: "MCP JSON",
+    icon: Braces,
+    snippet: {
+      file: "mcp.json",
+      code: `{
+  "mcpServers": {
+    "sendforsign": {
+      "type": "http",
+      "url": "${MCP_URL}",
       "headers": {
         "X-Sendforsign-Key": "YOUR_API_KEY",
-        "X-Sendforsign-Client-Key": "YOUR_CLIENT_KEY"
+        "X-Sendforsign-Client-Key": "YOUR_CLIENT_KEY",
+        "X-Sendforsign-Agent-Mode": "draft"
       }
     }
   }
 }`,
+    },
   },
   {
-    id: "curl",
+    id: "key-curl",
     label: "REST / cURL",
     icon: Globe,
-    file: "terminal",
-    code: `curl -X POST 'https://api.sendforsign.com/api/contract' \\
+    snippet: {
+      file: "terminal",
+      code: `curl -X POST 'https://api.sendforsign.com/api/contract' \\
   -H 'X-Sendforsign-Key: YOUR_API_KEY' \\
   -H 'Content-Type: application/json' \\
   -d '{
@@ -217,13 +272,15 @@ async with MCPServerStreamableHttp(
       }
     }
   }'`,
+    },
   },
   {
-    id: "node",
+    id: "key-node",
     label: "Node.js",
     icon: Hexagon,
-    file: "contract.mjs",
-    code: `const res = await fetch("https://api.sendforsign.com/api/contract", {
+    snippet: {
+      file: "contract.mjs",
+      code: `const res = await fetch("https://api.sendforsign.com/api/contract", {
   method: "POST",
   headers: {
     "X-Sendforsign-Key": process.env.SENDFORSIGN_API_KEY,
@@ -238,13 +295,15 @@ async with MCPServerStreamableHttp(
   }),
 });
 const { contract } = await res.json();`,
+    },
   },
   {
-    id: "python",
+    id: "key-python",
     label: "Python",
     icon: FileCode,
-    file: "contract.py",
-    code: `import os, requests
+    snippet: {
+      file: "contract.py",
+      code: `import os, requests
 
 res = requests.post(
     "https://api.sendforsign.com/api/contract",
@@ -258,6 +317,7 @@ res = requests.post(
     },
 )
 contract = res.json()["contract"]`,
+    },
   },
 ];
 
@@ -301,53 +361,210 @@ function CopyButton({
   );
 }
 
-const FLOW = [
-  { icon: FileText, title: "Template", text: "Fields marked by who fills them." },
-  { icon: Bot, title: "Agent fills its fields", text: "Names, fees, dates." },
-  { icon: Users, title: "Counterparty fills theirs", text: "Inside the signing page." },
-  { icon: PenLine, title: "Sign", text: "By email or inside your product." },
-  { icon: Webhook, title: "Webhook", text: "Viewed, signed, done." },
+function CodeBlock({
+  snippet,
+  copied,
+  onCopy,
+}: {
+  snippet: Snippet;
+  copied: boolean;
+  onCopy: () => void;
+}) {
+  const lines = snippet.code.split("\n");
+  return (
+    <div className="overflow-hidden rounded-xl border border-white/10 bg-black/50">
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 px-3 py-2">
+        <div className="flex min-w-0 items-center gap-3">
+          <span className="flex gap-1.5" aria-hidden>
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+            <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
+          </span>
+          <span className="truncate rounded-md bg-white/10 px-2 py-0.5 font-mono text-[12px] text-white/80">
+            {snippet.file}
+          </span>
+        </div>
+        <CopyButton copied={copied} onClick={onCopy} label={`Copy ${snippet.file}`} />
+      </div>
+      <pre className="overflow-x-auto p-4 font-mono text-[12px] leading-relaxed text-white/90 sm:text-[13px]">
+        <code className="grid">
+          {lines.map((line, i) => (
+            <span key={i} className="flex">
+              <span
+                aria-hidden
+                className="mr-4 inline-block w-6 shrink-0 select-none text-right text-white/25"
+              >
+                {i + 1}
+              </span>
+              <span className="whitespace-pre">{line || " "}</span>
+            </span>
+          ))}
+        </code>
+      </pre>
+    </div>
+  );
+}
+
+function InstallButton({ label, href }: { label: string; href: string }) {
+  return (
+    <a
+      href={href}
+      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10"
+    >
+      <Download className="h-4 w-4" />
+      {label}
+    </a>
+  );
+}
+
+const CONSENT_STEPS = [
+  { icon: Link2, title: "Paste link", text: "In Claude, ChatGPT, Cursor…" },
+  { icon: LogIn, title: "Sign in", text: "Pick account and tenant" },
+  { icon: ShieldCheck, title: "Pick mode", text: null },
 ];
 
+function ConsentSteps() {
+  return (
+    <ol className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-2 sm:grid-cols-3">
+      {CONSENT_STEPS.map((s, i) => (
+        <li
+          key={s.title}
+          className="flex items-start gap-3 rounded-xl border border-white/10 bg-neutral-950/80 p-3 backdrop-blur-md"
+        >
+          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white text-[11px] font-semibold text-black">
+            {i + 1}
+          </span>
+          <div className="min-w-0">
+            <p className="flex items-center gap-1.5 text-sm font-semibold text-white">
+              <s.icon className="h-3.5 w-3.5 text-white/60" />
+              {s.title}
+            </p>
+            {s.text ? (
+              <p className="mt-0.5 text-xs text-zinc-400">{s.text}</p>
+            ) : (
+              <div className="mt-1.5 flex flex-wrap gap-1">
+                <span className="rounded-md bg-emerald-400/15 px-1.5 py-0.5 text-[11px] text-emerald-300 ring-1 ring-emerald-400/30">
+                  Drafts only · default
+                </span>
+                <span className="rounded-md bg-white/5 px-1.5 py-0.5 text-[11px] text-white/60 ring-1 ring-white/10">
+                  Can send
+                </span>
+              </div>
+            )}
+          </div>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
 export function IntegrationSection() {
-  const [active, setActive] = useState(INTEGRATIONS[0].id);
+  const [mode, setMode] = useState<"oauth" | "key">("oauth");
+  const list = mode === "oauth" ? OAUTH_INTEGRATIONS : KEY_INTEGRATIONS;
+  const [activeId, setActiveId] = useState<Record<string, string>>({
+    oauth: OAUTH_INTEGRATIONS[0].id,
+    key: KEY_INTEGRATIONS[0].id,
+  });
+  const current = list.find((i) => i.id === activeId[mode]) ?? list[0];
   const { copied, copy } = useCopy();
-  const current = INTEGRATIONS.find((i) => i.id === active) ?? INTEGRATIONS[0];
-  const lines = current.code.split("\n");
 
   return (
     <section
       id="agents"
       className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8"
     >
-      <div className="mx-auto mb-10 max-w-2xl text-center">
+      <div className="mx-auto mb-8 max-w-2xl text-center">
         <Eyebrow>
           <Bot className="h-4 w-4 text-emerald-400" />
-          MCP server and REST API
+          MCP server
         </Eyebrow>
         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
           Connect your agent in a minute
         </h2>
-        <p className="text-lg text-slate-300">
-          Pick your client, paste one snippet, and your agent can draft, fill
-          and send contracts.
-        </p>
       </div>
+
+      {/* The one thing to copy */}
+      <div className="mx-auto flex max-w-2xl items-center gap-2 rounded-full border border-white/20 bg-neutral-950/90 p-2 pl-5 backdrop-blur-md sm:pl-6">
+        <span className="min-w-0 flex-1 truncate font-mono text-base text-white sm:text-xl">
+          {MCP_URL}
+        </span>
+        <button
+          type="button"
+          onClick={() => copy("mcp-url", MCP_URL)}
+          aria-label="Copy MCP server URL"
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white px-4 py-2 text-sm font-medium text-black transition hover:bg-white/90"
+        >
+          {copied === "mcp-url" ? (
+            <Check className="h-4 w-4" />
+          ) : (
+            <Copy className="h-4 w-4" />
+          )}
+          {copied === "mcp-url" ? "Copied" : "Copy"}
+        </button>
+      </div>
+      <p className="mx-auto mt-4 max-w-xl text-center text-slate-300">
+        Paste it into your AI app, sign in to Sendforsign, choose what the agent
+        may do. That&apos;s it.
+      </p>
+      <div className="mt-5 flex flex-wrap justify-center gap-3">
+        <InstallButton label="Add to Cursor" href={CURSOR_INSTALL_URL} />
+        <InstallButton label="Add to VS Code" href={VSCODE_INSTALL_URL} />
+      </div>
+
+      <ConsentSteps />
+
+      {/* Per-client details */}
+      <div className="mt-14 flex justify-center">
+        <div
+          role="tablist"
+          aria-label="How to connect"
+          className="inline-flex rounded-full border border-white/10 bg-neutral-950/80 p-1 text-sm backdrop-blur-md"
+        >
+          {(
+            [
+              ["oauth", "Sign in (recommended)"],
+              ["key", "For your own servers (API key)"],
+            ] as const
+          ).map(([id, label]) => (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              aria-selected={mode === id}
+              onClick={() => setMode(id)}
+              className={
+                "rounded-full px-3 py-1.5 transition sm:px-4 " +
+                (mode === id
+                  ? "bg-white text-black"
+                  : "text-white/60 hover:text-white")
+              }
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+      {mode === "key" && (
+        <p className="mx-auto mt-3 max-w-xl text-center text-sm text-zinc-400">
+          For agents that run on your backend without a person to sign in.
+          Mode and allowed domains come from headers.
+        </p>
+      )}
 
       <div
         role="tablist"
         aria-label="Choose your client"
-        className="grid grid-cols-2 gap-2 sm:grid-cols-4"
+        className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4"
       >
-        {INTEGRATIONS.map((it) => {
-          const on = it.id === active;
+        {list.map((it) => {
+          const on = it.id === current.id;
           return (
             <button
               key={it.id}
               type="button"
               role="tab"
               aria-selected={on}
-              onClick={() => setActive(it.id)}
+              onClick={() => setActiveId((s) => ({ ...s, [mode]: it.id }))}
               className={
                 "flex items-center gap-2 rounded-xl border px-3 py-3 text-left text-sm transition " +
                 (on
@@ -362,40 +579,34 @@ export function IntegrationSection() {
         })}
       </div>
 
-      <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/90 backdrop-blur-md">
-        <div className="flex items-center justify-between gap-3 border-b border-white/10 px-4 py-2">
-          <div className="flex min-w-0 items-center gap-3">
-            <span className="flex gap-1.5" aria-hidden>
-              <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
-            </span>
-            <span className="truncate rounded-md bg-white/10 px-2 py-0.5 font-mono text-[12px] text-white/80">
-              {current.file}
-            </span>
-          </div>
-          <CopyButton
-            copied={copied === current.id}
-            onClick={() => copy(current.id, current.code)}
-            label={`Copy ${current.label} snippet`}
-          />
-        </div>
-        <pre className="overflow-x-auto p-4 font-mono text-[12px] leading-relaxed text-white/90 sm:text-[13px]">
-          <code className="grid">
-            {lines.map((line, i) => (
-              <span key={i} className="flex">
-                <span
-                  aria-hidden
-                  className="mr-4 inline-block w-6 shrink-0 select-none text-right text-white/25"
-                >
+      <div className="mt-4 rounded-2xl border border-white/10 bg-neutral-950/90 p-4 backdrop-blur-md sm:p-5">
+        {current.steps && (
+          <ol className="space-y-2">
+            {current.steps.map((s, i) => (
+              <li key={i} className="flex items-start gap-3 text-sm text-white/85">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/20 text-[11px] text-white/70">
                   {i + 1}
                 </span>
-                <span className="whitespace-pre">{line || " "}</span>
-              </span>
+                <span className="min-w-0 break-words">{s}</span>
+              </li>
             ))}
-          </code>
-        </pre>
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/10 px-4 py-3 text-sm">
+          </ol>
+        )}
+        {current.install && (
+          <div className="mt-4">
+            <InstallButton {...current.install} />
+          </div>
+        )}
+        {current.snippet && (
+          <div className={current.steps ? "mt-4" : ""}>
+            <CodeBlock
+              snippet={current.snippet}
+              copied={copied === current.id}
+              onCopy={() => copy(current.id, current.snippet!.code)}
+            />
+          </div>
+        )}
+        <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-white/10 pt-3 text-sm">
           <a
             href={DOCS_MCP_QUICKSTART_URL}
             target="_blank"
@@ -412,29 +623,8 @@ export function IntegrationSection() {
           >
             Agent skill <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
-          <span className="text-white/40 sm:ml-auto">
-            MCP server in early access
-          </span>
         </div>
       </div>
-
-      <ol className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-        {FLOW.map((step, i) => (
-          <li
-            key={step.title}
-            className="rounded-2xl border border-white/10 bg-neutral-950/80 p-4 backdrop-blur-md"
-          >
-            <div className="mb-2 flex items-center gap-2">
-              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-[11px] font-semibold text-black">
-                {i + 1}
-              </span>
-              <step.icon className="h-4 w-4 text-white/70" />
-            </div>
-            <h3 className="text-sm font-semibold text-white">{step.title}</h3>
-            <p className="mt-1 text-xs text-zinc-400">{step.text}</p>
-          </li>
-        ))}
-      </ol>
     </section>
   );
 }
@@ -504,9 +694,9 @@ function TenantsVisual() {
 }
 
 const AUDIT_ROWS = [
-  { agent: "intake-agent", action: "create_contract", ok: true },
-  { agent: "intake-agent", action: "send_for_signature", ok: true },
-  { agent: "intake-agent", action: "send → gmail.com", ok: false },
+  { agent: "intake", action: "create_contract", ok: true },
+  { agent: "intake", action: "send_for_signature", ok: true },
+  { agent: "intake", action: "send → gmail.com", ok: false },
 ];
 
 function AuditVisual() {
@@ -516,7 +706,7 @@ function AuditVisual() {
         <div key={r.action} className="flex items-center gap-2 px-3 py-2">
           <span className="text-white/50">{r.agent}</span>
           <span className="text-white/30">·</span>
-          <span className="truncate text-white/80">{r.action}</span>
+          <span className="min-w-0 break-all text-white/80">{r.action}</span>
           <span className="ml-auto shrink-0">
             {r.ok ? (
               <Check className="h-3.5 w-3.5 text-emerald-400" />
@@ -583,8 +773,8 @@ export function DifferentiatorsSection() {
         ))}
       </div>
       <p className="mt-8 text-center text-sm text-zinc-500">
-        Simple electronic signatures for the EU and the US. Audit log in early
-        access.
+        Simple electronic signatures for the EU and the US, with an audit
+        trail on every contract and every agent action.
       </p>
     </section>
   );

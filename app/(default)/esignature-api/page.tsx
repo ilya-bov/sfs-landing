@@ -91,7 +91,7 @@ const content: SeoPageContent = {
     },
     {
       q: "Can AI agents use the API?",
-      a: "Yes. The Sendforsign MCP server (in early access) exposes the same API as tools for Claude, ChatGPT, Cursor and any MCP client, with the same keys and permissions.",
+      a: "Yes. The Sendforsign MCP server at https://api.sendforsign.com/mcp exposes the same API as tools for Claude, ChatGPT, Cursor and any MCP client. People connect by signing in; server-side agents can use an API key.",
     },
   ],
   docsLinks: [

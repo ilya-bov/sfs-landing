@@ -8,7 +8,7 @@ const content: SeoPageContent = {
   path: "/ai-contract-generation",
   eyebrow: "AI contract generation",
   title: "Generate contracts with your AI agent",
-  lead: "Connect Claude, ChatGPT, Cursor or your own agent to Sendforsign over MCP. The agent drafts contracts from your templates, fills its fields, adds signers and sends them for signature, with your approval.",
+  lead: "Connect Claude, ChatGPT, Cursor or your own agent to Sendforsign with one link and a sign-in. The agent drafts contracts from your templates, fills its fields, adds signers and sends them for signature, with your approval.",
   features: [
     {
       title: "From your own templates",
@@ -36,11 +36,10 @@ const content: SeoPageContent = {
     },
   ],
   code: {
-    caption: "Connect Claude Code in one command",
+    caption: "Connect Claude Code in one command, then sign in",
     language: "bash",
-    source: `claude mcp add --transport http sendforsign https://api.sendforsign.com/mcp \\
-  --header "X-Sendforsign-Key: YOUR_API_KEY" \\
-  --header "X-Sendforsign-Client-Key: YOUR_CLIENT_KEY"
+    source: `claude mcp add --transport http sendforsign https://api.sendforsign.com/mcp
+# inside Claude Code, run /mcp and sign in to Sendforsign
 
 # then ask:
 # "Create an NDA from my 'Mutual NDA' template for Acme Ltd,
@@ -48,12 +47,12 @@ const content: SeoPageContent = {
   },
   steps: [
     {
-      title: "Get your API key",
-      text: "Sign up at app.sendforsign.com and copy your API key and client key.",
+      title: "Copy one link",
+      text: "Paste https://api.sendforsign.com/mcp into Claude, ChatGPT, Cursor, VS Code, Claude Code or any MCP client.",
     },
     {
-      title: "Connect your agent",
-      text: "Add the Sendforsign MCP server to Claude Code, Claude Desktop, Cursor, the OpenAI Agents SDK or any MCP client.",
+      title: "Sign in and pick a mode",
+      text: "Sign in to Sendforsign, choose the account and tenant, and whether the agent drafts only (the default) or can send.",
     },
     {
       title: "Ask in plain language",
@@ -67,15 +66,15 @@ const content: SeoPageContent = {
   faq: [
     {
       q: "Which AI tools can generate contracts with Sendforsign?",
-      a: "Any client that supports remote MCP servers: Claude Code, Claude Desktop, Cursor, the OpenAI Agents SDK and others. Your own backend can do the same through the REST API.",
+      a: "Any client that supports remote MCP servers: Claude, ChatGPT, Claude Code, Cursor, VS Code, the OpenAI Agents SDK and others. Your own backend can do the same through the REST API.",
     },
     {
       q: "Will the agent send contracts without asking?",
       a: "Not unless you allow it. You choose the mode (read only, draft or send), sending requires an explicit confirmation, and you can limit recipients to allowed email domains.",
     },
     {
-      q: "Is the MCP server available now?",
-      a: "The MCP server is in early access. It calls the same REST API with the same keys and permissions.",
+      q: "Do I need an API key?",
+      a: "Yes. Connect with https://api.sendforsign.com/mcp and sign in; no API key needed. Agents that run on your own servers can use an API key instead.",
     },
     {
       q: "What happened to AI+API?",

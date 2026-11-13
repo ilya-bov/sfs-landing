@@ -13,5 +13,5 @@
 ## Endpoints
 
 - REST API: https://api.sendforsign.com/api/
-- MCP server (early access, Streamable HTTP): https://api.sendforsign.com/mcp
+- MCP server (Streamable HTTP, OAuth 2.1 sign-in or X-Sendforsign-Key header): https://api.sendforsign.com/mcp
 - App and API keys: https://app.sendforsign.com
