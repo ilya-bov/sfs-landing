@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
-// Shared layout for the product (SEO) pages: /esignature-api, /embedded-esignature,
-// /ai-contract-generation. Server component — all copy is in the HTML for crawlers.
+// Shared layout for the product and comparison (SEO) pages. Server component: all copy
+// is in the HTML for crawlers. `eyebrow` is the short page name used in breadcrumbs
+// and link lists; it is not rendered above the H1.
 
 export type SeoPageContent = {
   path: string;
@@ -14,14 +15,32 @@ export type SeoPageContent = {
   steps?: { title: string; text: string }[];
   faq: { q: string; a: string }[];
   docsLinks: { label: string; href: string }[];
+  // Customer quote; only real, attributed quotes.
+  quote?: { text: string; name: string; role: string };
+  // Comparison table; every cell must be sourced (see `sources`).
+  comparison?: {
+    caption: string;
+    columns: [string, string];
+    rows: { label: string; values: [string, string] }[];
+    note?: string;
+    sources?: { label: string; href: string }[];
+  };
 };
 
 const SITE_URL = "https://sendforsign.com";
 
 export const PRODUCT_PAGES = [
+  { href: "/mcp", label: "MCP server" },
   { href: "/esignature-api", label: "eSignature API" },
   { href: "/embedded-esignature", label: "Embedded e-signing" },
   { href: "/ai-contract-generation", label: "AI contract generation" },
+];
+
+export const COMPARE_PAGES: { href: string; label: string }[] = [
+  { href: "/docusign-alternative", label: "DocuSign alternative" },
+  { href: "/compare/boldsign", label: "Sendforsign vs BoldSign" },
+  { href: "/compare/dropbox-sign", label: "Sendforsign vs Dropbox Sign" },
+  { href: "/compare/signwell", label: "Sendforsign vs SignWell" },
 ];
 
 export function seoMetadata(
@@ -87,10 +106,7 @@ export default function SeoPage({ content }: { content: SeoPageContent }) {
 
       {/* Hero */}
       <section className="mx-auto max-w-4xl px-6 pt-36 pb-16 text-center md:pt-44">
-        <p className="mb-4 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-white">
-          {content.eyebrow}
-        </p>
-        <h1 className="text-4xl font-medium leading-tight tracking-tighter text-neutral-100 md:text-6xl">
+        <h1 className="text-4xl font-medium leading-tight tracking-tight text-neutral-100 md:text-6xl">
           {content.title}
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
@@ -98,10 +114,10 @@ export default function SeoPage({ content }: { content: SeoPageContent }) {
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
-            href="https://accounts.sendforsign.com/sign-up"
+            href="https://app.sendforsign.com"
             className="rounded-full bg-white px-6 py-3 text-sm font-medium text-black transition hover:bg-white/90"
           >
-            Get started
+            Get API key
           </Link>
           <Link
             href={content.docsLinks[0].href}
@@ -131,6 +147,63 @@ export default function SeoPage({ content }: { content: SeoPageContent }) {
         </div>
       </section>
 
+      {/* Customer quote */}
+      {content.quote && (
+        <section className="mx-auto max-w-4xl px-6 pb-16">
+          <figure className="rounded-2xl border border-white/10 bg-white/5 p-6 sm:p-8">
+            <blockquote className="text-lg leading-relaxed text-white/90">
+              “{content.quote.text}”
+            </blockquote>
+            <figcaption className="mt-4 text-sm text-white/60">
+              {content.quote.name}, {content.quote.role}
+            </figcaption>
+          </figure>
+        </section>
+      )}
+      {/* Comparison */}
+      {content.comparison && (
+        <section className="mx-auto max-w-5xl px-6 pb-16">
+          <h2 className="mb-6 text-2xl font-semibold tracking-tight text-white">
+            {content.comparison.caption}
+          </h2>
+          <div className="overflow-x-auto rounded-2xl border border-white/10">
+            <table className="w-full min-w-[560px] text-left text-sm">
+              <thead className="bg-white/5 text-white">
+                <tr>
+                  <th scope="col" className="p-4 font-medium"><span className="sr-only">Feature</span></th>
+                  <th scope="col" className="p-4 font-medium">{content.comparison.columns[0]}</th>
+                  <th scope="col" className="p-4 font-medium">{content.comparison.columns[1]}</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-white/10">
+                {content.comparison.rows.map((r) => (
+                  <tr key={r.label} className="align-top">
+                    <th scope="row" className="p-4 font-medium text-white">{r.label}</th>
+                    <td className="p-4 text-white/80">{r.values[0]}</td>
+                    <td className="p-4 text-white/70">{r.values[1]}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {content.comparison.note && (
+            <p className="mt-4 text-sm leading-relaxed text-white/60">{content.comparison.note}</p>
+          )}
+          {content.comparison.sources && content.comparison.sources.length > 0 && (
+            <p className="mt-2 text-xs leading-relaxed text-white/50">
+              Sources:{" "}
+              {content.comparison.sources.map((src, i) => (
+                <span key={src.href}>
+                  {i > 0 && ", "}
+                  <a href={src.href} rel="nofollow noopener" target="_blank" className="underline hover:text-white/80">
+                    {src.label}
+                  </a>
+                </span>
+              ))}
+            </p>
+          )}
+        </section>
+      )}
       {/* Code example */}
       {content.code && (
         <section className="mx-auto max-w-4xl px-6 pb-16">
@@ -214,7 +287,7 @@ export default function SeoPage({ content }: { content: SeoPageContent }) {
               More from Sendforsign
             </h2>
             <ul className="mt-3 space-y-2 text-sm">
-              {PRODUCT_PAGES.filter((p) => p.href !== content.path).map((p) => (
+              {[...PRODUCT_PAGES, ...COMPARE_PAGES].filter((p) => p.href !== content.path).map((p) => (
                 <li key={p.href}>
                   <Link
                     href={p.href}

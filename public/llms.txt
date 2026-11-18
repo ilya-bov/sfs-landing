@@ -10,6 +10,13 @@
 - [API introduction](https://about.sendforsign.com/api-reference/introapi): authentication with X-Sendforsign-Key, clientKey and userKey
 - [Docs home](https://about.sendforsign.com/introduction)
 
+## Pages
+
+- [E-signature MCP server](https://sendforsign.com/mcp): tools, OAuth sign-in, modes, confirmations, audit log
+- [eSignature API](https://sendforsign.com/esignature-api): REST API for contracts, templates, PDF, recipients, webhooks
+- [Embedded e-signing](https://sendforsign.com/embedded-esignature): React components, white-label signing
+- [Blog](https://sendforsign.com/blog): e-signature, embedded contracts, AI agents
+
 ## Endpoints
 
 - REST API: https://api.sendforsign.com/api/
