@@ -7,7 +7,8 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://sendforsign.com/sitemap.xml",
+    // The docs (Mintlify, proxied at /docs) publish their own sitemap.
+    sitemap: ["https://sendforsign.com/sitemap.xml", "https://sendforsign.com/docs/sitemap.xml"],
     host: "https://sendforsign.com",
   };
 }
