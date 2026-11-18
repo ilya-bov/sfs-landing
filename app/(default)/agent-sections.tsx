@@ -33,10 +33,12 @@ export const DOCS_SKILLS_URL = `${DOCS}/ai-agents/skills`;
 export const DOCS_PROMPTS_URL = `${DOCS}/ai-agents/prompts`;
 export const DOCS_API_URL = `${DOCS}/api-reference/introapi`;
 export const CONTACT_URL = "mailto:ilia@sendforsign.com";
+// Settings → Billing in the app: Tribute checkout (sign-up first if needed).
+export const BILLING_URL = `${APP_URL}/settings`;
 
 // Prices approved 2026-11-18. Billing counts contracts sent for signature;
-// drafts and reads are free. Pro/Platform checkout goes through Tribute once it is
-// wired up; until then their buttons go to CONTACT_URL. Keep in sync with
+// drafts and reads are free. Pro/Platform checkout goes through Tribute in the app
+// (BILLING_URL); Enterprise goes to CONTACT_URL. Keep in sync with
 // PRICE_FACTS below (FAQ, JSON-LD) and public/llms.txt.
 export const PRICE_FACTS = {
   free: "5 contracts a month",
@@ -80,7 +82,7 @@ const PRICING: {
       "50 contracts a month included",
       "Email support",
     ],
-    cta: { label: "Start Pro", href: CONTACT_URL },
+    cta: { label: "Start Pro", href: BILLING_URL },
   },
   {
     name: "Platform",
@@ -94,7 +96,7 @@ const PRICING: {
       "A tenant per customer, scoped keys and agent connections",
       "Embeddable React components",
     ],
-    cta: { label: "Start Platform", href: CONTACT_URL },
+    cta: { label: "Start Platform", href: BILLING_URL },
     highlight: true,
   },
   {
