@@ -32,7 +32,7 @@ export const DOCS_MCP_QUICKSTART_URL = `${DOCS}/ai-agents/mcp-quickstart`;
 export const DOCS_SKILLS_URL = `${DOCS}/ai-agents/skills`;
 export const DOCS_PROMPTS_URL = `${DOCS}/ai-agents/prompts`;
 export const DOCS_API_URL = `${DOCS}/api-reference/introapi`;
-export const CONTACT_URL = "mailto:hello@sendforsign.com";
+export const CONTACT_URL = "mailto:ilia@sendforsign.com";
 
 // Pricing is a hypothesis (platform fee + per-contract usage, free sandbox).
 // Leave `price` null until real numbers are approved; the card then shows
