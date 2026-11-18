@@ -3,7 +3,6 @@ title: "How to send a contract for signature from Claude, step by step"
 description: "Connect Claude to an e-signature MCP server, draft a contract from a template or from your own text, let the other side fill their fields, and send it for signature without leaving the chat."
 date: 2026-11-18
 author: "Ilia, founder of Sendforsign"
-draft: true
 ---
 
 Claude can draft a contract in seconds. Getting that contract signed used to be the slow part: copy the text into an e-signature tool, add fields, add signers, send. With an MCP server, Claude does those steps itself, and you stay in the chat.

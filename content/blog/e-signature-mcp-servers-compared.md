@@ -3,7 +3,6 @@ title: "E-signature MCP servers compared: DocuSign, BoldSign, Dropbox Sign, Sign
 description: "Five e-signature vendors now offer an MCP server for AI agents. How they connect, what they let an agent do, and which guardrails the server actually enforces."
 date: 2026-11-18
 author: "Ilia, founder of Sendforsign"
-draft: true
 ---
 
 A year ago, letting an AI agent send a contract meant writing your own tool around an e-signature API. Today most of the big vendors ship an MCP server, so Claude, ChatGPT or Cursor can talk to them directly. That is good news, but the servers are not interchangeable. They differ in where they run, how you connect, what the agent can do, and above all in what stops an agent from sending something it should not.
