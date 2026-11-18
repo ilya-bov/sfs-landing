@@ -2,7 +2,7 @@ import SeoPage, { seoMetadata, type SeoPageContent } from "@/components/seo-page
 
 const DOCS = "https://sendforsign.com/docs";
 
-// Tool list mirrors sendforsign-api src/mcp/tools.js (19 tools). Update both together.
+// Tool list mirrors sendforsign-api src/mcp/tools.js (33 tools). Update both together.
 const content: SeoPageContent = {
   path: "/mcp",
   eyebrow: "MCP server",
@@ -72,7 +72,7 @@ const content: SeoPageContent = {
   faq: [
     {
       q: "Which tools does the Sendforsign MCP server expose?",
-      a: "19 tools: get_connection_info, list_templates, get_template, list_contracts, get_contract, create_contract, update_contract, create_pdf_contract, place_pdf_fields, list_placeholders, fill_placeholders, add_recipients, list_recipients, send_for_signature, get_contract_timeline, download_contract_pdf, archive_contract, list_users and create_user. Each carries read-only or destructive hints for the client.",
+      a: "33 tools. Contracts: list_contracts, get_contract, create_contract, update_contract, duplicate_contract, create_pdf_contract, place_pdf_fields, get_contract_timeline, download_contract_pdf, archive_contract. Templates: list_templates, get_template, create_template, update_template, create_pdf_template, create_template_from_contract, duplicate_template, delete_template. Fields: list_placeholders, fill_placeholders, remove_field. Recipients: add_recipients, list_recipients, update_recipient, remove_recipient, send_for_signature. Account: get_connection_info, get_usage, list_webhooks, create_webhook, delete_webhook, list_users, create_user. Each carries read-only or destructive hints for the client.",
     },
     {
       q: "Which AI apps can connect?",

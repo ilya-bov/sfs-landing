@@ -51,7 +51,7 @@ Its safety model is simple and good: every document starts as a draft, and nothi
 
 ## Sendforsign
 
-Ours is a remote server at `https://api.sendforsign.com/mcp`. People connect by pasting the URL into their AI app and signing in; on the consent screen they pick the account, optionally one tenant, and a mode. Agents that run on your servers use an API key in headers instead. It has 19 tools: templates and their fields, drafts from a template or from the agent's own text, PDF upload and field placement, recipients, sending, timeline, PDF download and tenants.
+Ours is a remote server at `https://api.sendforsign.com/mcp`. People connect by pasting the URL into their AI app and signing in; on the consent screen they pick the account, optionally one tenant, and a mode. Agents that run on your servers use an API key in headers instead. It has 33 tools: creating and editing templates (including PDF templates) and their fields, drafts from a template or from the agent's own text, PDF upload and field placement, recipients, sending, timeline, PDF download, usage, webhooks and tenants.
 
 Where we differ is what the server enforces:
 

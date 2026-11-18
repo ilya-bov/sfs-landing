@@ -5,7 +5,7 @@
 export const CHECKED = "18 November 2026";
 
 export const SFS = {
-  mcp: "Remote server at api.sendforsign.com/mcp. Sign in with OAuth, or an API key for server-side agents. 19 tools: templates, drafts with fields marked in the text, PDF upload and field placement, recipients, send, timeline, tenants.",
+  mcp: "Remote server at api.sendforsign.com/mcp. Sign in with OAuth, or an API key for server-side agents. 33 tools: templates (including from a PDF), drafts with fields marked in the text, PDF upload and field placement, recipients, send, timeline, usage, webhooks, tenants.",
   guardrails: "Enforced by the server: read-only, draft or send mode per connection; every send and archive needs confirm: true; recipient domain allowlist; tenant-limited connections; hash-chained log of agent actions.",
   embedded: "Signing link per recipient for your own UI, or the RecipientView React component inside your app.",
   branding: "Your logo on emails and the signing page, Sendforsign branding can be turned off, signing links on your own domain via CNAME.",
