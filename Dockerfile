@@ -33,40 +33,16 @@ RUN pnpm run build
 
 # Production image
 FROM node:20-alpine AS runner
-
-# Создаем непривилегированного пользователя для безопасности
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nextjs -u 1001
-
 WORKDIR /app
-
-# Устанавливаем pnpm в production образе
-RUN npm install -g pnpm@10.13.1
-
-# Копируем package.json и pnpm-lock.yaml (если есть)
-COPY package.json ./
-COPY pnpm-lock.yaml* ./
-
-# Устанавливаем только production зависимости
-# Опциональные зависимости устанавливаются автоматически для правильной платформы (Linux)
-RUN if [ -f pnpm-lock.yaml ]; then \
-        pnpm install --frozen-lockfile --prod; \
-    else \
-        echo "⚠️  WARNING: pnpm-lock.yaml not found, installing without lockfile"; \
-        pnpm install --prod; \
-    fi && \
-    # Очищаем кэш для уменьшения размера образа
-    pnpm store prune && \
-    # Удаляем ненужные файлы
-    rm -rf /tmp/* /var/cache/apk/*
-
-# Копируем только необходимые файлы из builder
+ENV NODE_ENV=production \
+    PORT=3000 \
+    HOSTNAME=0.0.0.0
+# output: "standalone" (next.config.js): server.js plus only the traced dependencies.
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder --chown=nextjs:nodejs /app/next.config.js ./next.config.js
-
-# Переключаемся на непривилегированного пользователя
 USER nextjs
-
-# Запускаем приложение
-CMD ["pnpm", "start"]
+EXPOSE 3000
+CMD ["node", "server.js"]
