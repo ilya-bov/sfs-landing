@@ -12,7 +12,7 @@ const content: SeoPageContent = {
     { title: "Built for platforms", text: "A client per customer of your platform and a user per tenant. An agent connection can be limited to one tenant." },
     { title: "Fields with owners", text: "You fill your fields, each recipient fills theirs. Recipients cannot change the text or anyone else's fields, and nothing changes after signing." },
     { title: "Signing under your brand", text: "Your logo on emails and the signing page, Sendforsign branding turned off, signing links on your own domain." },
-    { title: "Free sandbox", text: "The whole create, send and sign flow before you ship. Then a platform fee plus contracts sent, no seats." },
+    { title: "Free sandbox", text: "The whole create, send and sign flow before you ship. Then from $29 a month, no seats." },
   ],
   comparison: {
     caption: "Sendforsign and SignWell side by side",
@@ -38,7 +38,7 @@ const content: SeoPageContent = {
     { q: "What is the main difference between Sendforsign and SignWell?", a: "Sendforsign is built for products that embed contracts for many customers and let AI agents act on them: a remote MCP server with sign-in, per-tenant connections and guardrails the server enforces, plus fields that each belong to one party." },
     { q: "When is SignWell the better choice?", a: "When pay-per-document pricing with free monthly documents matters most and a local MCP package with an API key is enough for your agents." },
     { q: "Do you support advanced or qualified electronic signatures?", a: "No. Sendforsign provides simple electronic signatures under eIDAS and the ESIGN Act and UETA, with an audit trail and a signature certificate." },
-    { q: "How is Sendforsign priced?", a: "A monthly platform fee plus the contracts you send for signature, with no seats and no per-agent fees. Drafts and reads are not billed, and the sandbox is free." },
+    { q: "How is Sendforsign priced?", a: "Free for 5 contracts a month; Pro $29 a month with 50 contracts, then $0.50 each; Platform $199 a month with 300 contracts and white-label, then $0.40 each. Drafts are free, no seats or per-agent fees." },
   ],
   docsLinks: [
     { label: "MCP quickstart", href: "https://sendforsign.com/docs/ai-agents/mcp-quickstart" },

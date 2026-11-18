@@ -11,7 +11,7 @@ export const SFS = {
   branding: "Your logo on emails and the signing page, Sendforsign branding can be turned off, signing links on your own domain via CNAME.",
   platforms: "A client per customer of your platform and a user per tenant; API keys, webhooks and agent connections can be scoped to one tenant.",
   fields: "Each field has an owner: you, any recipient or a specific recipient. Recipients can change only their own fields, and only until they sign.",
-  price: "Platform fee plus contracts sent; no seats, no per-agent fees. Free sandbox with the full flow. Prices on request.",
+  price: "Free: 5 contracts a month. Pro: $29 a month with 50 contracts. Platform with white-label and tenants: $199 a month with 300 contracts, then $0.40 each. No seats or per-agent fees.",
   levels: "Simple electronic signatures (eIDAS SES, ESIGN/UETA) with audit trail and signature certificate. No AES or QES.",
 };
 

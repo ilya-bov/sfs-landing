@@ -12,7 +12,7 @@ const content: SeoPageContent = {
     { title: "Built for platforms", text: "A client per customer of your platform and a user per tenant, with webhooks and agent connections scoped to them." },
     { title: "Fields with owners", text: "You fill your fields, each recipient fills theirs. Recipients cannot change the text or anyone else's fields, and nothing changes after signing." },
     { title: "Agents with guardrails", text: "A remote MCP server with drafts by default, a confirmation on every send, a domain allowlist and a log of every agent action." },
-    { title: "Start without a sales call", text: "Free sandbox with the full create, send and sign flow. Pricing is a platform fee plus contracts sent." },
+    { title: "Start without a sales call", text: "Free for 5 contracts a month, Platform with white-label from $199 a month. No sales call needed." },
   ],
   quote: {
     text: "DocuSign's embedding capabilities are absolutely suboptimal. The best they offer is an iframe that opens inside your app, but as a platform, we have no control over what happens inside of it. With Sendforsign, I have full control over the user UX/UI; people won't even realize they are signing contracts using a different software. The API-first integration their team built is so seamless.",
@@ -51,7 +51,7 @@ const content: SeoPageContent = {
     { q: "Can recipients sign without leaving my app?", a: "Yes. Show the signing link in your UI or embed it with the RecipientView React component, under your brand and, if you want, on your own domain." },
     { q: "Do you support advanced or qualified electronic signatures?", a: "No. Sendforsign provides simple electronic signatures under eIDAS and the ESIGN Act and UETA, with an audit trail and a signature certificate. If you need AES or QES, DocuSign or a qualified trust provider is the better fit." },
     { q: "Can my AI agent send contracts?", a: "Yes, through the remote MCP server. New connections can only draft; sending needs send mode and a confirmation on every send." },
-    { q: "How is it priced?", a: "A monthly platform fee plus the contracts you send for signature, with no seats and no per-agent fees. The sandbox is free." },
+    { q: "How is it priced?", a: "Free for 5 contracts a month; Pro $29 a month with 50 contracts, then $0.50 each; Platform $199 a month with 300 contracts and white-label, then $0.40 each. Drafts are free, no seats or per-agent fees." },
   ],
   docsLinks: [
     { label: "Embed contracts for your platform", href: "https://sendforsign.com/docs/usecase/embeddocforplatform" },

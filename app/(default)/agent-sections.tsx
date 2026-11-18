@@ -34,9 +34,16 @@ export const DOCS_PROMPTS_URL = `${DOCS}/ai-agents/prompts`;
 export const DOCS_API_URL = `${DOCS}/api-reference/introapi`;
 export const CONTACT_URL = "mailto:ilia@sendforsign.com";
 
-// Pricing is a hypothesis (platform fee + per-contract usage, free sandbox).
-// Leave `price` null until real numbers are approved; the card then shows
-// `fallback` instead of a figure.
+// Prices approved 2026-11-18. Billing counts contracts sent for signature;
+// drafts and reads are free. Pro/Platform checkout goes through Tribute once it is
+// wired up; until then their buttons go to CONTACT_URL. Keep in sync with
+// PRICE_FACTS below (FAQ, JSON-LD) and public/llms.txt.
+export const PRICE_FACTS = {
+  free: "5 contracts a month",
+  pro: "$29 a month with 50 contracts, then $0.50 per contract",
+  platform: "$199 a month with 300 contracts, then $0.40 per contract",
+};
+
 const PRICING: {
   name: string;
   price: string | null;
@@ -48,42 +55,58 @@ const PRICING: {
   highlight?: boolean;
 }[] = [
   {
-    name: "Sandbox",
-    price: "Free",
+    name: "Free",
+    price: "$0",
     fallback: "Free",
-    blurb: "Run the whole flow before you ship.",
+    blurb: "Build and test the whole flow.",
     items: [
-      "Templates, fields, recipients, signing",
-      "Test recipients and webhooks",
+      "5 contracts sent a month",
       "REST API and MCP server",
+      "Templates, fields, recipients, webhooks",
+      "Agent modes, send confirmations, audit log",
+      "Unlimited drafts",
     ],
     cta: { label: "Get API key", href: APP_URL },
   },
   {
-    name: "Platform",
-    price: null,
+    name: "Pro",
+    price: "$29",
     unit: "/ month",
-    fallback: "Monthly platform fee",
-    blurb: "For products that embed contracts for their own customers.",
+    fallback: "$29 / month",
+    blurb: "50 contracts a month included, then $0.50 each.",
     items: [
-      "Tenants per customer (userKey)",
-      "Your brand on emails and signing pages",
-      "Embeddable React components and webhooks",
-      "Agent modes, confirmations and audit log",
+      "Everything in Free",
+      "Your logo on emails and the signing page",
+      "50 contracts a month included",
+      "Email support",
     ],
-    cta: { label: "Talk to us", href: CONTACT_URL },
+    cta: { label: "Start Pro", href: CONTACT_URL },
+  },
+  {
+    name: "Platform",
+    price: "$199",
+    unit: "/ month",
+    fallback: "$199 / month",
+    blurb: "300 contracts a month included, then $0.40 each.",
+    items: [
+      "Everything in Pro",
+      "White-label: no Sendforsign brand, your signing domain",
+      "A tenant per customer, scoped keys and agent connections",
+      "Embeddable React components",
+    ],
+    cta: { label: "Start Platform", href: CONTACT_URL },
     highlight: true,
   },
   {
-    name: "Usage",
+    name: "Enterprise",
     price: null,
-    unit: "/ contract sent",
-    fallback: "Per contract sent",
-    blurb: "Pay for contracts that go out for signature.",
+    fallback: "Custom",
+    blurb: "Volume pricing, SLA and DPA.",
     items: [
-      "No per-seat fees",
-      "No per-agent fees",
-      "Drafts and reads are not billed",
+      "Everything in Platform",
+      "Volume pricing",
+      "SLA and DPA",
+      "Onboarding with our team",
     ],
     cta: { label: "Talk to us", href: CONTACT_URL },
   },
@@ -859,13 +882,14 @@ export function PricingSection() {
     >
       <div className="mx-auto mb-12 max-w-3xl text-center">
         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-          A platform fee plus the contracts you send
+          Pay for the contracts you send
         </h2>
         <p className="text-lg text-slate-300">
-          No seats and no per-agent fees. Start in the free sandbox.
+          No seats and no per-agent fees. Drafts are free; you pay for contracts
+          sent for signature.
         </p>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
         {PRICING.map((p) => (
           <div
             key={p.name}
@@ -950,7 +974,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "How much does it cost?",
-    a: "A monthly platform fee plus the contracts you send for signature. There are no seats and no per-agent fees, drafts and reads are not billed, and the sandbox is free.",
+    a: "Free for 5 contracts a month. Pro is $29 a month with 50 contracts, then $0.50 each; Platform is $199 a month with 300 contracts, then $0.40 each, and adds white-label and a tenant per customer. Only contracts sent for signature count: drafts and reads are free, and there are no seats or per-agent fees.",
   },
 ];
 

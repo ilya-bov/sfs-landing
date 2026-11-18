@@ -91,13 +91,11 @@ const jsonLd = {
         "Webhooks for contract events",
         "Simple electronic signatures for the EU and the US",
       ],
-      offers: {
-        "@type": "Offer",
-        name: "Sandbox",
-        price: "0",
-        priceCurrency: "USD",
-        description: "Free sandbox covering the full create, send and sign flow.",
-      },
+      offers: [
+        { "@type": "Offer", name: "Free", price: "0", priceCurrency: "USD", description: "5 contracts sent a month, REST API and MCP server." },
+        { "@type": "Offer", name: "Pro", price: "29", priceCurrency: "USD", description: "Per month, 50 contracts included, then $0.50 per contract." },
+        { "@type": "Offer", name: "Platform", price: "199", priceCurrency: "USD", description: "Per month, 300 contracts included, then $0.40 per contract; white-label and tenants." },
+      ],
       publisher: { "@id": `${SITE_URL}/#organization` },
     },
   ],

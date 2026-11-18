@@ -96,7 +96,7 @@ const content: SeoPageContent = {
     },
     {
       q: "How much does it cost?",
-      a: "The MCP server is part of the platform: a monthly platform fee plus the contracts you send. Drafts and reads are not billed, and the sandbox is free.",
+      a: "The MCP server is included in every plan, Free included. Free for 5 contracts a month; Pro $29 a month with 50 contracts, then $0.50 each; Platform $199 a month with 300 contracts and white-label, then $0.40 each. Drafts are free, no seats or per-agent fees.",
     },
   ],
   docsLinks: [

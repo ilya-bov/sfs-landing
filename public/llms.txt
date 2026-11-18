@@ -10,6 +10,13 @@
 - [API introduction](https://sendforsign.com/docs/api-reference/introapi): authentication with X-Sendforsign-Key, clientKey and userKey
 - [Docs home](https://sendforsign.com/docs/introduction)
 
+## Pricing
+
+- Free: 5 contracts sent a month, REST API and MCP server
+- Pro: $29/month, 50 contracts included, then $0.50 per contract
+- Platform: $199/month, 300 contracts included, then $0.40 per contract; white-label, a tenant per customer, React components
+- Enterprise: custom. Only contracts sent for signature count; drafts and reads are free. No seats or per-agent fees.
+
 ## Pages
 
 - [E-signature MCP server](https://sendforsign.com/mcp): tools, OAuth sign-in, modes, confirmations, audit log
