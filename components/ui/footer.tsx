@@ -20,7 +20,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <Logo />
             </div>
             <p className="text-xs text-muted-foreground">
-              © 2025 • Sendforsign, Inc. • Designed with love
+              © {new Date().getFullYear()} • Sendforsign, Inc. • Designed with love
             </p>
             <p className="text-xs text-muted-foreground">
               1111B S Governors Ave STE 7848 Dover, DE 19904

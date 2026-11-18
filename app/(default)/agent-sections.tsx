@@ -89,14 +89,6 @@ const PRICING: {
   },
 ];
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
-      {children}
-    </p>
-  );
-}
-
 // ---------------------------------------------------------------------------
 // Connecting an agent. Two ways:
 //  - sign-in (OAuth 2.1 + dynamic client registration): one URL, no keys;
@@ -474,12 +466,8 @@ export function IntegrationSection() {
       className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8"
     >
       <div className="mx-auto mb-8 max-w-2xl text-center">
-        <Eyebrow>
-          <Bot className="h-4 w-4 text-emerald-400" />
-          MCP server
-        </Eyebrow>
         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-          Connect your agent in a minute
+          Connect your agent to the MCP server in a minute
         </h2>
       </div>
 
@@ -516,7 +504,7 @@ export function IntegrationSection() {
       {/* Per-client details */}
       <div className="mt-14 flex justify-center">
         <div
-          role="tablist"
+          role="group"
           aria-label="How to connect"
           className="inline-flex rounded-full border border-white/10 bg-neutral-950/80 p-1 text-sm backdrop-blur-md"
         >
@@ -529,11 +517,10 @@ export function IntegrationSection() {
             <button
               key={id}
               type="button"
-              role="tab"
-              aria-selected={mode === id}
+              aria-pressed={mode === id}
               onClick={() => setMode(id)}
               className={
-                "rounded-full px-3 py-1.5 transition sm:px-4 " +
+                "rounded-full px-3 py-1.5 transition sm:px-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 " +
                 (mode === id
                   ? "bg-white text-black"
                   : "text-white/60 hover:text-white")
@@ -552,7 +539,7 @@ export function IntegrationSection() {
       )}
 
       <div
-        role="tablist"
+        role="group"
         aria-label="Choose your client"
         className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-4"
       >
@@ -562,11 +549,10 @@ export function IntegrationSection() {
             <button
               key={it.id}
               type="button"
-              role="tab"
-              aria-selected={on}
+              aria-pressed={on}
               onClick={() => setActiveId((s) => ({ ...s, [mode]: it.id }))}
               className={
-                "flex items-center gap-2 rounded-xl border px-3 py-3 text-left text-sm transition " +
+                "flex items-center gap-2 rounded-xl border px-3 py-3 text-left text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 " +
                 (on
                   ? "border-white/40 bg-white/10 text-white"
                   : "border-white/10 bg-neutral-950/80 text-white/60 hover:border-white/20 hover:text-white/90")
@@ -654,7 +640,7 @@ function FieldRolesVisual() {
       Agreement between <Chip who="agent">Studio Nord</Chip> and{" "}
       <Chip who="party">Client company</Chip> for a fee of{" "}
       <Chip who="agent">€2,400</Chip>, signed by <Chip who="party">Full name</Chip>.
-      <div className="mt-3 flex gap-4 text-[11px] text-white/50">
+      <div className="mt-3 flex gap-4 text-xs text-white/60">
         <span className="flex items-center gap-1.5">
           <span className="h-2 w-2 rounded-full bg-emerald-400" /> Agent
         </span>
@@ -747,10 +733,6 @@ export function DifferentiatorsSection() {
   return (
     <section className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto mb-12 max-w-2xl text-center">
-        <Eyebrow>
-          <ShieldCheck className="h-4 w-4 text-emerald-400" />
-          Why Sendforsign
-        </Eyebrow>
         <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
           Built for agents and the people they work for
         </h2>
@@ -772,7 +754,7 @@ export function DifferentiatorsSection() {
           </div>
         ))}
       </div>
-      <p className="mt-8 text-center text-sm text-zinc-500">
+      <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-zinc-400">
         Simple electronic signatures for the EU and the US, with an audit
         trail on every contract and every agent action.
       </p>
@@ -816,12 +798,8 @@ export function PromptsSection() {
   return (
     <section className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto mb-10 max-w-2xl text-center">
-        <Eyebrow>
-          <MessageSquare className="h-4 w-4 text-emerald-400" />
-          For Claude, ChatGPT and Cursor
-        </Eyebrow>
         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
-          Prompts that just work
+          Prompts for Claude, ChatGPT and Cursor
         </h2>
         <p className="text-lg text-slate-300">
           Connect the MCP server, then paste one of these.
@@ -843,7 +821,7 @@ export function PromptsSection() {
                   {p.tools.map((t) => (
                     <span
                       key={t}
-                      className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[10px] text-white/45"
+                      className="rounded bg-white/5 px-1.5 py-0.5 font-mono text-[11px] text-white/70"
                     >
                       {t}
                     </span>
@@ -880,7 +858,6 @@ export function PricingSection() {
       className="relative z-10 mx-auto max-w-6xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8"
     >
       <div className="mx-auto mb-12 max-w-3xl text-center">
-        <Eyebrow>Pricing</Eyebrow>
         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-5xl">
           A platform fee plus the contracts you send
         </h2>
@@ -938,6 +915,103 @@ export function PricingSection() {
             </Button>
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// FAQ. The same list feeds the visible answers and the FAQPage structured data,
+// so they cannot drift apart. Keep every answer true to what the product does.
+const FAQ: { q: string; a: string }[] = [
+  {
+    q: "What is Sendforsign?",
+    a: "An e-signature and contract API for products that build AI agents. You create contracts from templates, text or PDF, decide who fills each field, send them for signature and get webhooks when they are signed. It works through a REST API, a remote MCP server and embeddable React components.",
+  },
+  {
+    q: "How does my AI agent connect?",
+    a: "Paste https://api.sendforsign.com/mcp into Claude, ChatGPT, Cursor, VS Code or any MCP client and sign in to Sendforsign. You pick the account, the tenant and what the agent may do. Agents that run on your own servers can use an API key instead.",
+  },
+  {
+    q: "Can the agent send a contract without a person approving it?",
+    a: "Only if you allow it. New connections can draft but not send. Sending and archiving need an explicit confirmation, recipients can be limited to your domains, and every agent action is written to an audit log on the contract.",
+  },
+  {
+    q: "Is it white-label and multi-tenant?",
+    a: "Yes. Each of your customers is a tenant with its own contracts and your brand on emails and signing pages. You can show signing links inside your own product or embed the contract editor with our React components.",
+  },
+  {
+    q: "Can a recipient change the contract?",
+    a: "No. A recipient can only fill the fields assigned to them, and only until they sign. The text, the owner's fields and other recipients' fields stay as you sent them, and nothing changes after signing.",
+  },
+  {
+    q: "Are the signatures legally valid in the EU and the US?",
+    a: "Sendforsign provides simple electronic signatures under eIDAS in the EU and the ESIGN Act and UETA in the US. Every signed contract comes with an audit trail and a signature certificate.",
+  },
+  {
+    q: "How much does it cost?",
+    a: "A monthly platform fee plus the contracts you send for signature. There are no seats and no per-agent fees, drafts and reads are not billed, and the sandbox is free.",
+  },
+];
+
+const FAQ_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+export function FaqSection() {
+  return (
+    <section
+      id="faq"
+      className="relative z-10 mx-auto max-w-3xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8"
+    >
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }}
+      />
+      <div className="mb-10 text-center">
+        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+          Questions teams ask before they ship
+        </h2>
+      </div>
+      <div className="divide-y divide-white/10 rounded-2xl border border-white/10 bg-neutral-950/80 backdrop-blur-md">
+        {FAQ.map((f) => (
+          <details key={f.q} className="group px-5 py-4 sm:px-6">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-left text-base font-medium text-white">
+              <h3 className="text-base font-medium">{f.q}</h3>
+              <span className="text-neutral-400 transition-transform group-open:rotate-45" aria-hidden>
+                +
+              </span>
+            </summary>
+            <p className="mt-3 text-sm leading-relaxed text-neutral-300">{f.a}</p>
+          </details>
+        ))}
+      </div>
+      <div className="mt-16 text-center">
+        <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+          Your agent drafts. People sign.
+        </h2>
+        <p className="mx-auto mt-3 max-w-xl text-neutral-300">
+          Start in the free sandbox: the whole create, send and sign flow,
+          through MCP or the API.
+        </p>
+        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+          <Button asChild size="lg" className="rounded-full">
+            <a href={APP_URL} target="_blank" rel="noopener">
+              Get API key
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="outline" className="rounded-full">
+            <a href={DOCS_MCP_QUICKSTART_URL} target="_blank" rel="noopener">
+              MCP quickstart
+            </a>
+          </Button>
+        </div>
       </div>
     </section>
   );

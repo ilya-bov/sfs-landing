@@ -1,13 +1,12 @@
 "use client";
-import { useEffect, useMemo, useRef, useState, memo } from "react";
+import { useEffect, useRef, useState, memo } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Terminal } from "lucide-react";
 import {
   APP_URL,
   DifferentiatorsSection,
   DOCS_AGENTS_URL,
-  DOCS_MCP_QUICKSTART_URL,
+  FaqSection,
   IntegrationSection,
   PricingSection,
   PromptsSection,
@@ -64,55 +63,17 @@ export default function Home() {
       {/* Hero content */}
       <div
         className="relative z-10 flex flex-col items-center justify-center px-6 pt-40 lg:pt-40 2xl:pt-110 md:pb-40 text-center"
-        data-aos="zoom-y-out"
-        data-aos-delay={100}
       >
         <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-white opacity-5 blur-[100px] rounded-full pointer-events-none"></div>
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 backdrop-blur-sm bg-white/5 px-3 py-1 text-xs font-medium text-white">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g clipPath="url(#clip0_5187_41545)">
-              <path
-                d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12Z"
-                fill="white"
-              />
-              <path
-                d="M9.19102 14.2307L12.5698 5.05757C12.6124 4.942 12.7625 4.9131 12.845 5.00464L18.9422 11.7763C19.0246 11.8679 18.9802 12.0142 18.8608 12.0445L9.38482 14.4458C9.25718 14.4782 9.14553 14.3542 9.19102 14.2307Z"
-                fill="black"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M12.8247 5.02307C12.756 4.94679 12.6308 4.97086 12.5953 5.06719L9.21659 14.2403C9.21658 14.2403 9.21658 14.2403 9.21658 14.2403C9.17868 14.3432 9.27172 14.4465 9.37809 14.4196L18.8541 12.0182C18.9536 11.993 18.9906 11.871 18.9219 11.7948L18.9422 11.7765L18.9219 11.7948L12.8247 5.02307ZM12.8652 4.98657L12.845 5.00477L12.8652 4.98657L18.9625 11.7583C19.0586 11.865 19.0068 12.0358 18.8675 12.0711L9.39149 14.4725C9.24259 14.5102 9.11232 14.3656 9.1654 14.2214L9.1654 14.2214L12.5442 5.04833L12.5442 5.04832C12.5939 4.9135 12.769 4.87978 12.8652 4.98657Z"
-                fill="white"
-              />
-              <path
-                d="M14.9208 9.2665C16.6745 11.2142 18.5317 12.4009 19.069 11.9171C19.6063 11.4333 18.6202 9.46226 16.8665 7.5146C15.1128 5.56693 13.2556 4.38021 12.7183 4.86399C12.181 5.34777 13.1671 7.31884 14.9208 9.2665Z"
-                fill="#333333"
-              />
-            </g>
-            <defs>
-              <clipPath id="clip0_5187_41545">
-                <rect width="24" height="24" fill="white" />
-              </clipPath>
-            </defs>
-          </svg>
-          Sendforsign
-        </p>
-        {/* Alternative headlines to swap in:
+                {/* Alternative headlines to swap in:
             "Contracts your AI agent can send"
             "E-signature for AI agents, under your brand" */}
-        <h1 className="md:text-6xl max-w-4xl text-neutral-100 leading-tight text-4xl font-medium tracking-tighter">
+        <h1 className="md:text-6xl max-w-4xl text-neutral-100 leading-tight text-4xl font-medium tracking-tight">
           Your agent drafts. People sign.
         </h1>
         <p className="md:text-xl max-w-2xl text-lg text-neutral-300 mt-6">
-          Contracts, e-signature and an audit trail for AI agents, inside your
-          product, via MCP or API.
+          E-signature API and MCP server for AI agents: contracts, signing and
+          an audit trail inside your product.
         </p>
         <div className="mt-12 flex flex-col sm:flex-row gap-4">
           <Button
@@ -136,7 +97,7 @@ export default function Home() {
             </a>
           </Button>
         </div>
-        <p className="mt-6 text-sm text-neutral-500">
+        <p className="mt-6 text-sm text-neutral-400">
           REST API, MCP server and React components. Free sandbox.
         </p>
       </div>
@@ -153,7 +114,7 @@ export default function Home() {
           <div className="text-center space-y-12">
             <div className="space-y-4">
               <div className="md:p-8 rounded-3xl mt-6 p-6 border border-white/10 bg-black/50 ">
-                <p className="uppercase text-sm font-medium text-zinc-400 tracking-wide">
+                <p className="text-sm font-medium text-zinc-400">
                   Powering the world’s most focused teams
                 </p>
                 <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
@@ -298,34 +259,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-8 border-t border-white/10">
-              <div className="text-center space-y-2">
-                <div className="text-2xl sm:text-3xl font-light tracking-tight text-white">
-                  500+
-                </div>
-                <div className="text-sm text-zinc-400">Active teams</div>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="text-2xl sm:text-3xl font-light tracking-tight text-white">
-                  1K+
-                </div>
-                <div className="text-sm text-zinc-400">Contracts daily</div>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="text-2xl sm:text-3xl font-light tracking-tight text-white">
-                  99.9%
-                </div>
-                <div className="text-sm text-zinc-400">Uptime</div>
-              </div>
-              <div className="text-center space-y-2">
-                <div className="text-2xl sm:text-3xl font-light tracking-tight text-white">
-                  70+
-                </div>
-                <div className="text-sm text-zinc-400">Countries</div>
-              </div>
             </div>
-          </div>
         </div>
       </section>
       {/* Hero video */}
@@ -360,52 +294,23 @@ export default function Home() {
         </div>
       </div> */}
 
-      <StackSection />
-
       {/* Our Clients */}
       <section
         id="analytics"
-        className="py-16 pt-40 relative -z-1"
+        className="py-16 pt-24 relative"
         data-aos="zoom-y-out"
         data-aos-delay={100}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-6 items-start">
             <div className="lg:col-span-5">
-              <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  data-lucide="sparkles"
-                  className="lucide lucide-sparkles w-4 h-4 text-white/80"
-                >
-                  <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"></path>
-                  <path d="M20 2v4"></path>
-                  <path d="M22 4h-4"></path>
-                  <circle cx="4" cy="20" r="2"></circle>
-                </svg>
-                Our Clients
-              </p>
-              <h2
-                className="mt-2 text-3xl lg:text-4xl tracking-tight text-white"
-                style={{
-                  fontFamily: "Plus Jakarta Sans, Inter, sans-serif",
-                  fontWeight: 600,
-                }}
-              >
-                Our clients share their success
+                            <h2 className="mt-2 text-3xl lg:text-4xl font-semibold tracking-tight text-white">
+                Signing that feels native to your product
               </h2>
               <p className="mt-3 text-gray-300">
-                Success stories are the clearest proof of impact. Companies and
-                entrepreneurs already rely on our solutions to accelerate
-                growth, streamline processes, and increase revenue.
+                Maroo embedded Sendforsign under its own brand instead of a
+                third-party signing iframe, and went from kickoff to release in
+                four weeks.
               </p>
             </div>
 
@@ -485,421 +390,12 @@ export default function Home() {
         </div>
       </section>
 
+      <StackSection />
+
       <PricingSection />
 
-      {/* Feature Rotator (Sendforsign) */}
-      <FeatureRotator />
+      <FaqSection />
     </div>
-  );
-}
-
-// AI+API (aiapi.sendforsign.com) is deprecated: agents use the MCP server and
-// the agent skill instead.
-const AgentConnectBlock = memo(function AgentConnectBlock() {
-  return (
-    <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-4">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <Terminal className="h-4 w-4 text-white/80" />
-          <h3 className="text-xl font-semibold tracking-tight text-white">
-            MCP + Agent skill
-          </h3>
-        </div>
-        <span className="text-[11px] text-white/60">claude code</span>
-      </div>
-      <pre className="mt-3 overflow-x-auto rounded-xl border border-white/10 bg-black/40 p-3 font-mono text-[12px] leading-relaxed text-white/90">
-        <code>{`claude mcp add --transport http \\
-  sendforsign https://api.sendforsign.com/mcp
-
-# sign in once:
-/mcp`}</code>
-      </pre>
-      <div className="mt-4 rounded-lg border border-white/10 bg-black/30 p-3">
-        <p className="text-xs leading-relaxed text-white/70">
-          <span className="font-medium text-white/80">Your agent</span> lists
-          templates, drafts contracts, fills fields and sends them for
-          signature. One link and a sign-in in Claude, ChatGPT, Cursor or any MCP client.{" "}
-          <a
-            href={DOCS_MCP_QUICKSTART_URL}
-            target="_blank"
-            rel="noopener"
-            className="underline underline-offset-2 hover:text-white"
-          >
-            MCP quickstart
-          </a>
-        </p>
-      </div>
-    </div>
-  );
-});
-
-type AccentName = "emerald" | "amber" | "violet" | "sky";
-
-type SlideBadge = {
-  text: string;
-  color: AccentName;
-  target: string;
-};
-
-type Slide = {
-  key: "docs" | "comments" | "commands";
-  bullet: string;
-  accent: AccentName;
-  icon: "zap" | "code" | "puzzle";
-  pillText: string;
-  tailText: string;
-  body: string;
-  description: string;
-  badges: SlideBadge[];
-};
-
-function FeatureRotator() {
-  const slides: Slide[] = useMemo(
-    () => [
-      {
-        key: "docs",
-        bullet: "AI-powered contract generation",
-        accent: "emerald",
-        icon: "zap",
-        pillText: "Generate",
-        tailText: "contracts",
-        body: "Create professional contracts from templates in seconds with our advanced AI. No more manual drafting or formatting.",
-        description:
-          "Generate contracts instantly from templates using AI. Save hours of manual work and ensure consistency.",
-        badges: [
-          { text: "AI", color: "emerald", target: "templates" },
-          { text: "fast", color: "violet", target: "generation" },
-        ],
-      },
-      {
-        key: "comments",
-        bullet: "API and MCP for agents",
-        accent: "amber",
-        icon: "code",
-        pillText: "Integrate",
-        tailText: "seamlessly",
-        body: "Do anything with contracts from your backend over REST, or let your AI agent do it through the MCP server.",
-        description:
-          "Integrate contract management directly into your backend. Full control and flexibility for any use case.",
-        badges: [
-          { text: "API", color: "amber", target: "backend" },
-          { text: "flexible", color: "sky", target: "customization" },
-        ],
-      },
-      {
-        key: "commands",
-        bullet: "Embeddable components",
-        accent: "violet",
-        icon: "puzzle",
-        pillText: "Embed",
-        tailText: "contracts",
-        body: "Embed contracts directly into your applications and services. Users won't even know they're using external contract functionality.",
-        description:
-          "Seamlessly integrate contracts into your existing apps. Native experience with powerful contract capabilities.",
-        badges: [
-          { text: "embed", color: "violet", target: "components" },
-          { text: "native", color: "emerald", target: "experience" },
-        ],
-      },
-    ],
-    []
-  );
-
-  const accents: Record<
-    AccentName,
-    { pill: string; iconBox: string; bar: string }
-  > = {
-    emerald: {
-      pill: "ring-emerald-500/60 bg-emerald-500/10 text-emerald-200",
-      iconBox: "bg-emerald-500/10 text-emerald-400 ring-1 ring-emerald-500/20",
-      bar: "bg-emerald-400",
-    },
-    amber: {
-      pill: "ring-amber-500/60 bg-amber-500/10 text-amber-200",
-      iconBox: "bg-amber-500/10 text-amber-400 ring-1 ring-amber-500/20",
-      bar: "bg-amber-400",
-    },
-    violet: {
-      pill: "ring-violet-500/60 bg-violet-500/10 text-violet-200",
-      iconBox: "bg-violet-500/10 text-violet-400 ring-1 ring-violet-500/20",
-      bar: "bg-violet-400",
-    },
-    sky: {
-      pill: "ring-sky-500/60 bg-sky-500/10 text-sky-200",
-      iconBox: "bg-sky-500/10 text-sky-400 ring-1 ring-sky-500/20",
-      bar: "bg-sky-400",
-    },
-  };
-
-  const highlightMap: Record<Slide["key"], string[]> = {
-    docs: ["templates", "generation"],
-    comments: ["backend", "customization"],
-    commands: ["components", "experience"],
-  };
-
-  const [index, setIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    if (isPaused) return;
-    const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(id);
-  }, [isPaused, slides.length]);
-
-  const active = slides[index];
-
-  return (
-    <section
-      className="max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
-      <div className="text-center mb-16 md:mb-20">
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            data-lucide="zap"
-            className="lucide lucide-zap h-4 w-4 text-emerald-400"
-          >
-            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
-          </svg>
-          AI-powered contract generation
-        </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-4">
-          Transform how you create and manage contracts
-        </h2>
-        <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-          From AI-powered contract creation to seamless integrations,
-          Sendforsign gives your team the tools to generate, customize, and
-          deploy contracts in seconds.
-        </p>
-      </div>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
-        <div className="order-2 lg:order-1">
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-white mb-8">
-            Build powerful contract solutions with cutting-edge AI
-          </h3>
-          <div className="space-y-6">
-            {slides.map((s, i) => {
-              const isActive = i === index;
-              return (
-                <button
-                  type="button"
-                  key={s.key}
-                  onClick={() => setIndex(i)}
-                  className="group w-full flex items-start gap-4 text-left p-4 rounded-xl transition-all hover:bg-white/[0.02] border border-transparent hover:border-white/10"
-                >
-                  <div className="flex-shrink-0">
-                    <span
-                      className={
-                        "h-8 w-1 rounded-full transition-colors block " +
-                        (isActive
-                          ? accents[active.accent].bar
-                          : "bg-neutral-700 group-hover:bg-neutral-600")
-                      }
-                    ></span>
-                  </div>
-                  <div>
-                    <span
-                      className={
-                        "text-base sm:text-lg font-semibold block mb-2 " +
-                        (isActive
-                          ? "text-white"
-                          : "text-neutral-500 group-hover:text-neutral-300")
-                      }
-                    >
-                      {s.bullet}
-                    </span>
-                    <span
-                      className={
-                        "text-sm leading-relaxed " +
-                        (isActive
-                          ? "text-neutral-400"
-                          : "text-neutral-500 group-hover:text-neutral-400")
-                      }
-                    >
-                      {s.description}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-        <div className="relative order-1 lg:order-2">
-          <div className="relative rounded-2xl border border-neutral-800/80 bg-neutral-900/50 shadow-[0_20px_80px_-20px_rgba(0,0,0,0.8)] ring-1 ring-white/5 backdrop-blur-md overflow-hidden">
-            <div className="h-14 flex items-center gap-3 px-6 border-b border-neutral-800/70 text-neutral-400">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                data-lucide="file-text"
-                className="lucide lucide-file-text w-5 h-5"
-              >
-                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                <path d="M10 9H8"></path>
-                <path d="M16 13H8"></path>
-                <path d="M16 17H8"></path>
-              </svg>
-              <div className="flex items-center gap-2 text-sm">
-                <span className="truncate font-medium">
-                  Sendforsign workspace
-                </span>
-                <span className="opacity-50">›</span>
-                <span className="truncate text-neutral-300 font-medium">
-                  Agreement strategy
-                </span>
-              </div>
-              <div className="ml-auto flex items-center gap-2 opacity-60">
-                <div className="flex -space-x-1">
-                  <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
-                    <span className="text-[10px] font-medium text-emerald-300">
-                      N
-                    </span>
-                  </div>
-                  <div className="w-6 h-6 rounded-full bg-violet-500/20 border border-violet-500/40 flex items-center justify-center">
-                    <span className="text-[10px] font-medium text-violet-300">
-                      L
-                    </span>
-                  </div>
-                </div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  data-lucide="more-horizontal"
-                  className="lucide lucide-more-horizontal w-4 h-4"
-                >
-                  <circle cx="12" cy="12" r="1"></circle>
-                  <circle cx="19" cy="12" r="1"></circle>
-                  <circle cx="5" cy="12" r="1"></circle>
-                </svg>
-              </div>
-            </div>
-            <div className="relative px-8 py-10">
-              <div className="absolute left-4 top-1/2 -translate-y-1/2 flex flex-col gap-1.5 text-neutral-700">
-                <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
-                <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
-                <span className="w-1.5 h-1.5 rounded-full bg-current"></span>
-              </div>
-              <div
-                className={
-                  "w-16 h-16 rounded-xl flex items-center justify-center mb-6 " +
-                  accents[active.accent].iconBox
-                }
-              >
-                {active.icon === "zap" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    data-lucide="zap"
-                    className="lucide lucide-zap w-7 h-7"
-                  >
-                    <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"></polygon>
-                  </svg>
-                )}
-                {active.icon === "code" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    data-lucide="code"
-                    className="lucide lucide-code w-7 h-7"
-                  >
-                    <polyline points="16,18 22,12 16,6"></polyline>
-                    <polyline points="8,6 2,12 8,18"></polyline>
-                  </svg>
-                )}
-                {active.icon === "puzzle" && (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    data-lucide="puzzle"
-                    className="lucide lucide-puzzle w-7 h-7"
-                  >
-                    <rect x="4" y="4" width="6" height="6" rx="1"></rect>
-                    <rect x="14" y="4" width="6" height="6" rx="1"></rect>
-                    <rect x="4" y="14" width="6" height="6" rx="1"></rect>
-                    <rect x="14" y="14" width="6" height="6" rx="1"></rect>
-                  </svg>
-                )}
-              </div>
-              <div className="relative mb-6">
-                <h4 className="text-3xl font-semibold tracking-tight text-white flex flex-wrap items-center gap-3 mb-3">
-                  <span
-                    className={
-                      "inline-flex items-center rounded-lg px-3 py-2 ring-1 text-lg " +
-                      accents[active.accent].pill
-                    }
-                  >
-                    {active.pillText}
-                  </span>
-                  <span>{active.tailText}</span>
-                </h4>
-                <div className="relative"></div>
-              </div>
-              <p className="text-neutral-400 leading-relaxed text-lg mb-8">
-                {active.body}
-              </p>
-              <div className="space-y-3 mb-6">
-                <div className="h-2 rounded-full bg-neutral-800/70 w-4/5"></div>
-                <div className="h-2 rounded-full bg-neutral-800/70 w-full"></div>
-                <div className="h-2 rounded-full bg-neutral-800/70 w-3/5"></div>
-              </div>
-              <div className="space-y-3 opacity-60">
-                <div className="h-2 rounded-full bg-neutral-800/70 w-5/6"></div>
-                <div className="h-2 rounded-full bg-neutral-800/70 w-3/4"></div>
-                <div className="h-2 rounded-full bg-neutral-800/70 w-4/5"></div>
-              </div>
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-neutral-950/90 to-transparent"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -912,33 +408,13 @@ const StackSection = memo(function StackSection() {
       data-aos-delay={100}
     >
       <div className="text-center mb-16 ">
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            data-lucide="workflow"
-            className="lucide lucide-workflow h-4 w-4 text-emerald-400"
-          >
-            <rect width="8" height="8" x="3" y="3" rx="2"></rect>
-            <path d="M7 11v4a2 2 0 0 0 2 2h4"></path>
-            <rect width="8" height="8" x="13" y="13" rx="2"></rect>
-          </svg>
-          Use Cases
-        </p>
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-4">
-          Streamline AI agreements for any use case
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-white mb-4">
+          Everything the contract flow needs
         </h2>
         <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-          A suite of products for all contract cases: Legal AI co-pilot,
-          Contract Builder, Word and PDF uploader, workflows, approvals, eSign
-          APIs, and embeddable UIs
+          Templates with field roles, HTML and PDF signing, approvals,
+          webhooks, an audit trail and embeddable React components, through
+          REST or MCP.
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 md:gap-8">
@@ -991,7 +467,6 @@ const StackSection = memo(function StackSection() {
           }}
         />
 
-        <AgentConnectBlock />
 
         <div
           dangerouslySetInnerHTML={{
@@ -1014,26 +489,26 @@ const StackSection = memo(function StackSection() {
     >
       <path d="m13 2-8 14h7l-1 8 8-14h-7l1-8z"></path>
     </svg>
-    <h3 class="text-xl font-semibold tracking-tight text-white">Implement Today</h3>
+    <h3 class="text-xl font-semibold tracking-tight text-white">From sandbox to production</h3>
   </div>
   <ol class="mt-3">
     <li class="relative pl-6 pb-4 border-l border-white/10">
       <span class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-white"></span>
-      <p class="text-xs text-white/60">10:00 — Decision</p>
-      <p class="text-sm font-medium tracking-tight text-white">Choose Sendforsign eSignature</p>
-      <p class="text-xs text-white/60 mt-1">Create API key, pick a template, define signer roles.</p>
+      <p class="text-xs text-white/60">Step 1 — Sandbox</p>
+      <p class="text-sm font-medium tracking-tight text-white">Get a free API key</p>
+      <p class="text-xs text-white/60 mt-1">Pick a template and set who fills each field.</p>
     </li>
     <li class="relative pl-6 pb-4 border-l border-white/10">
       <span class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-white/80"></span>
-      <p class="text-xs text-white/60">11:00 — Implementation</p>
-      <p class="text-sm font-medium tracking-tight text-white">Integrate contract creation API</p>
-      <p class="text-xs text-white/60 mt-1">Hook web app/server, set webhooks, enable reminders and approvals.</p>
+      <p class="text-xs text-white/60">Step 2 — Integrate</p>
+      <p class="text-sm font-medium tracking-tight text-white">Connect REST or MCP</p>
+      <p class="text-xs text-white/60 mt-1">Add webhooks, show signing links in your product.</p>
     </li>
     <li class="relative pl-6 border-l border-white/10">
       <span class="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-white/60"></span>
-      <p class="text-xs text-white/60">13:00 — Testing</p>
-      <p class="text-sm font-medium tracking-tight text-white">Run end‑to‑end sign flow</p>
-      <p class="text-xs text-white/60 mt-1">Send test contracts, verify audit trail, export signed PDFs.</p>
+      <p class="text-xs text-white/60">Step 3 — Go live</p>
+      <p class="text-sm font-medium tracking-tight text-white">Run the full signing flow</p>
+      <p class="text-xs text-white/60 mt-1">Send test contracts, check the audit trail and signed PDFs.</p>
     </li>
   </ol>
 </div>
@@ -1066,7 +541,7 @@ const StackSection = memo(function StackSection() {
   </div>
   <ol class="mt-3">
     <li class="grid grid-cols-[auto_1fr] gap-6 pb-6">
-      <div class="text-sm text-white/70">2025-08-01 16:34</div>
+      <div class="text-sm text-white/70">2026-11-12 16:34</div>
       <div class="relative pl-6 border-l border-white/10">
         <span class="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-white"></span>
         <div class="mb-2">
@@ -1083,7 +558,7 @@ const StackSection = memo(function StackSection() {
       </div>
     </li>
     <li class="grid grid-cols-[auto_1fr] gap-6 pb-6">
-      <div class="text-sm text-white/70">2025-08-01 16:18</div>
+      <div class="text-sm text-white/70">2026-11-12 16:18</div>
       <div class="relative pl-6 border-l border-white/10">
         <span class="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-white/80"></span>
         <div class="mb-2">
@@ -1100,7 +575,7 @@ const StackSection = memo(function StackSection() {
       </div>
     </li>
     <li class="grid grid-cols-[auto_1fr] gap-6">
-      <div class="text-sm text-white/70">2025-08-01 16:15</div>
+      <div class="text-sm text-white/70">2026-11-12 16:15</div>
       <div class="relative pl-6 border-l border-white/10">
         <span class="absolute left-[-5px] top-2 w-2 h-2 rounded-full bg-white/60"></span>
         <div class="mb-2">
@@ -1211,6 +686,7 @@ const StackSection = memo(function StackSection() {
         />
 
         <div
+          className="md:col-span-2"
           dangerouslySetInnerHTML={{
             __html: `
         <div class="rounded-2xl border border-white/10 bg-white/5 p-4 h-full">
@@ -1233,10 +709,10 @@ const StackSection = memo(function StackSection() {
 <code><span class="p">{</span>
   <span class="k">"clientKey"</span><span class="p">:</span> <span class="s">"658599d9-bbbe"</span><span class="p">,</span>
   <span class="k">"contractKey"</span><span class="p">:</span> <span class="s">"433e835c-0630"</span><span class="p">,</span>
-  <span class="k">"createTime"</span><span class="p">:</span> <span class="s">"2024-12-13T16:06:56.000Z"</span><span class="p">,</span>
+  <span class="k">"createTime"</span><span class="p">:</span> <span class="s">"2026-11-12T16:34:08.000Z"</span><span class="p">,</span>
   <span class="k">"status"</span><span class="p">:</span> <span class="s">"contract.signed"</span><span class="p">,</span>
-  <span class="k">"email"</span><span class="p">:</span> <span class="s">"ilia@sendforsign.com"</span><span class="p">,</span>
-  <span class="k">"fullname"</span><span class="p">:</span> <span class="s">"Ilia Bovk"</span><span class="p">,</span>
+  <span class="k">"email"</span><span class="p">:</span> <span class="s">"jane@acme.com"</span><span class="p">,</span>
+  <span class="k">"fullname"</span><span class="p">:</span> <span class="s">"Jane Doe"</span><span class="p">,</span>
   <span class="k">"contractName"</span><span class="p">:</span> <span class="s">"Sales Contract"</span><span class="p">,</span>
   <span class="k">"recipientKey"</span><span class="p">:</span> <span class="s">"b113a5ea-115b"</span>
 <span class="p">}</span></code>
@@ -1266,11 +742,8 @@ const StackSection = memo(function StackSection() {
             size="lg"
             className="rounded-full shadow-lg hover:shadow-xl"
           >
-            <a
-              target="_blank"
-              href="https://accounts.sendforsign.com/sign-up"
-            >
-              Get Started
+            <a target="_blank" rel="noopener" href={APP_URL}>
+              Get API key
             </a>
           </Button>
           <Button

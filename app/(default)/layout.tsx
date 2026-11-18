@@ -16,7 +16,10 @@ export default function DefaultLayout({
   useEffect(() => {
     AOS.init({
       once: true,
-      disable: "phone",
+      // Off on phones and for anyone who asked for less motion.
+      disable: () =>
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        window.innerWidth < 768,
       duration: 700,
       easing: "ease-out-cubic",
     });

@@ -10,10 +10,11 @@ const inter = Inter({
 });
 
 const SITE_URL = "https://sendforsign.com";
-const SITE_TITLE =
-  "Sendforsign — Your agent drafts. People sign.";
+// Search title carries the queries we want to rank for; social cards keep the slogan.
+const SITE_TITLE = "E-signature API and MCP server for AI agents | Sendforsign";
+const SOCIAL_TITLE = "Sendforsign — Your agent drafts. People sign.";
 const SITE_DESCRIPTION =
-  "Contracts, e-signature and an audit trail for AI agents, inside your product, via MCP or API. The agent drafts from your templates and fills its fields; people fill theirs and sign. White-label and multi-tenant.";
+  "E-signature API and MCP server for AI agents. Draft contracts from your templates, let people fill their fields and sign. White-label, multi-tenant.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,13 +31,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: "Sendforsign",
-    title: SITE_TITLE,
+    title: SOCIAL_TITLE,
     description: SITE_DESCRIPTION,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_TITLE,
+    title: SOCIAL_TITLE,
     description: SITE_DESCRIPTION,
   },
   robots: {
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
-    apple: "/favicon.svg",
+    apple: "/apple-touch-icon.png",
   },
 };
 
@@ -59,10 +60,12 @@ const jsonLd = {
       "@id": `${SITE_URL}/#organization`,
       name: "Sendforsign",
       url: SITE_URL,
-      logo: `${SITE_URL}/favicon.svg`,
+      logo: `${SITE_URL}/logo-512.png`,
       sameAs: [
         "https://www.linkedin.com/company/sendforsign/",
         "https://www.youtube.com/@Sendforsign",
+        "https://github.com/sendforsign",
+        "https://www.npmjs.com/package/sendforsign",
       ],
     },
     {
@@ -108,6 +111,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://static.hotjar.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
