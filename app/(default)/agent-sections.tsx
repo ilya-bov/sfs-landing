@@ -25,7 +25,7 @@ import { Button } from "@/components/ui/button";
 
 // Single place for outbound links used by the agent-positioning sections.
 // Slugs match the "AI agents" section in sendforsign-docs (branch docs/ai-agents).
-const DOCS = "https://about.sendforsign.com";
+const DOCS = "https://sendforsign.com/docs";
 export const APP_URL = "https://app.sendforsign.com";
 export const DOCS_AGENTS_URL = `${DOCS}/ai-agents/overview`;
 export const DOCS_MCP_QUICKSTART_URL = `${DOCS}/ai-agents/mcp-quickstart`;

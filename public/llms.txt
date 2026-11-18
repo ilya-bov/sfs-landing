@@ -4,11 +4,11 @@
 
 ## Docs
 
-- [AI agents](https://about.sendforsign.com/ai-agents/overview): MCP server quickstart (Claude, ChatGPT, Cursor, Claude Code), headers, tools, modes and audit log
-- [MCP quickstart](https://about.sendforsign.com/ai-agents/mcp-quickstart): connect Claude Code, Claude Desktop, Cursor, OpenAI Agents SDK
-- [Agent skill](https://about.sendforsign.com/ai-agents/skills): SKILL.md recipes for drafting, filling and sending contracts
-- [API introduction](https://about.sendforsign.com/api-reference/introapi): authentication with X-Sendforsign-Key, clientKey and userKey
-- [Docs home](https://about.sendforsign.com/introduction)
+- [AI agents](https://sendforsign.com/docs/ai-agents/overview): MCP server quickstart (Claude, ChatGPT, Cursor, Claude Code), headers, tools, modes and audit log
+- [MCP quickstart](https://sendforsign.com/docs/ai-agents/mcp-quickstart): connect Claude Code, Claude Desktop, Cursor, OpenAI Agents SDK
+- [Agent skill](https://sendforsign.com/docs/ai-agents/skills): SKILL.md recipes for drafting, filling and sending contracts
+- [API introduction](https://sendforsign.com/docs/api-reference/introapi): authentication with X-Sendforsign-Key, clientKey and userKey
+- [Docs home](https://sendforsign.com/docs/introduction)
 
 ## Pages
 

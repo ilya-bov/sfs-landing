@@ -31,4 +31,4 @@ Visit the live landing page at [https://sendforsign.com/](https://sendforsign.co
 
 ## Contact
 
-For more information, visit our website or check out our [Documentation](https://about.sendforsign.com/).
+For more information, visit our website or check out our [Documentation](https://sendforsign.com/docs/).

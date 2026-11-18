@@ -47,4 +47,4 @@ If you run a platform, your agent often works for one of your customers at a tim
 
 None of this needs a new kind of product. It needs an e-signature API that was built with agents in mind: a remote MCP server, a sign-in instead of a shared key, modes, confirmations, a domain allowlist, field roles and an audit log.
 
-That is what we built. You can connect it to Claude, ChatGPT or Cursor with one URL, [https://api.sendforsign.com/mcp](https://sendforsign.com/mcp), and the [MCP quickstart](https://about.sendforsign.com/ai-agents/mcp-quickstart) walks through the first contract.
+That is what we built. You can connect it to Claude, ChatGPT or Cursor with one URL, [https://api.sendforsign.com/mcp](https://sendforsign.com/mcp), and the [MCP quickstart](https://sendforsign.com/docs/ai-agents/mcp-quickstart) walks through the first contract.

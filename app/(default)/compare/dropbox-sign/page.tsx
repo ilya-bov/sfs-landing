@@ -43,9 +43,9 @@ const content: SeoPageContent = {
     { q: "How is Sendforsign priced?", a: "A monthly platform fee plus the contracts you send for signature, with no seats and no per-agent fees. Drafts and reads are not billed, and the sandbox is free." },
   ],
   docsLinks: [
-    { label: "MCP quickstart", href: "https://about.sendforsign.com/ai-agents/mcp-quickstart" },
-    { label: "API introduction", href: "https://about.sendforsign.com/api-reference/introapi" },
-    { label: "Embed contracts for your platform", href: "https://about.sendforsign.com/usecase/embeddocforplatform" },
+    { label: "MCP quickstart", href: "https://sendforsign.com/docs/ai-agents/mcp-quickstart" },
+    { label: "API introduction", href: "https://sendforsign.com/docs/api-reference/introapi" },
+    { label: "Embed contracts for your platform", href: "https://sendforsign.com/docs/usecase/embeddocforplatform" },
   ],
 };
 

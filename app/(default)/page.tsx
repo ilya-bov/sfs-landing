@@ -754,7 +754,7 @@ const StackSection = memo(function StackSection() {
           >
             <a
               target="_blank"
-              href="https://about.sendforsign.com/api-reference/introapi"
+              href="https://sendforsign.com/docs/api-reference/introapi"
             >
               Documentation
             </a>

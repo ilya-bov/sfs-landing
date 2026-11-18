@@ -16,7 +16,7 @@ export const SFS = {
 };
 
 export const SFS_SOURCES = [
-  { label: "Sendforsign MCP tools", href: "https://about.sendforsign.com/ai-agents/tools" },
-  { label: "Sendforsign modes and headers", href: "https://about.sendforsign.com/ai-agents/headers" },
-  { label: "Sendforsign custom signing domain", href: "https://about.sendforsign.com/usecase/recipientdomain" },
+  { label: "Sendforsign MCP tools", href: "https://sendforsign.com/docs/ai-agents/tools" },
+  { label: "Sendforsign modes and headers", href: "https://sendforsign.com/docs/ai-agents/headers" },
+  { label: "Sendforsign custom signing domain", href: "https://sendforsign.com/docs/usecase/recipientdomain" },
 ];

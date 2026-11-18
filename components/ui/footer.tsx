@@ -34,7 +34,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/about/vision"
+                  href="https://sendforsign.com/docs/about/vision"
                   target="_blank"
                 >
                   About Sendforsign
@@ -43,7 +43,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/changelog/"
+                  href="https://sendforsign.com/docs/changelog/"
                   target="_blank"
                 >
                   Changelog
@@ -52,7 +52,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/introduction"
+                  href="https://sendforsign.com/docs/introduction"
                   target="_blank"
                 >
                   Documentation
@@ -86,7 +86,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/about/compliance"
+                  href="https://sendforsign.com/docs/about/compliance"
                   target="_blank"
                 >
                   Legal Compliance
@@ -95,7 +95,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/usecase/firstdoc"
+                  href="https://sendforsign.com/docs/usecase/firstdoc"
                   target="_blank"
                 >
                   Send your first document
@@ -104,7 +104,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/usecase/firsttemplate"
+                  href="https://sendforsign.com/docs/usecase/firsttemplate"
                   target="_blank"
                 >
                   Draft a template
@@ -120,7 +120,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/about/termsandconditions"
+                  href="https://sendforsign.com/docs/about/termsandconditions"
                   target="_blank"
                 >
                   Terms and Conditions
@@ -129,7 +129,7 @@ export default function Footer({ border = false }: { border?: boolean }) {
               <li>
                 <Link
                   className="text-muted-foreground transition hover:text-foreground"
-                  href="https://about.sendforsign.com/about/privacypolicy"
+                  href="https://sendforsign.com/docs/about/privacypolicy"
                   target="_blank"
                 >
                   Privacy Policy

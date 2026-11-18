@@ -1,6 +1,6 @@
 import SeoPage, { seoMetadata, type SeoPageContent } from "@/components/seo-page";
 
-const DOCS = "https://about.sendforsign.com";
+const DOCS = "https://sendforsign.com/docs";
 
 const content: SeoPageContent = {
   path: "/embedded-esignature",

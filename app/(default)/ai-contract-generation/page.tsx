@@ -1,6 +1,6 @@
 import SeoPage, { seoMetadata, type SeoPageContent } from "@/components/seo-page";
 
-const DOCS = "https://about.sendforsign.com";
+const DOCS = "https://sendforsign.com/docs";
 
 // URL kept for SEO. This page used to pitch AI+API (aiapi.sendforsign.com),
 // which is deprecated in favour of the MCP server and the agent skill.

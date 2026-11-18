@@ -54,10 +54,10 @@ const content: SeoPageContent = {
     { q: "How is it priced?", a: "A monthly platform fee plus the contracts you send for signature, with no seats and no per-agent fees. The sandbox is free." },
   ],
   docsLinks: [
-    { label: "Embed contracts for your platform", href: "https://about.sendforsign.com/usecase/embeddocforplatform" },
-    { label: "Send your first document", href: "https://about.sendforsign.com/usecase/firstdoc" },
-    { label: "Custom domain for signing links", href: "https://about.sendforsign.com/usecase/recipientdomain" },
-    { label: "MCP quickstart", href: "https://about.sendforsign.com/ai-agents/mcp-quickstart" },
+    { label: "Embed contracts for your platform", href: "https://sendforsign.com/docs/usecase/embeddocforplatform" },
+    { label: "Send your first document", href: "https://sendforsign.com/docs/usecase/firstdoc" },
+    { label: "Custom domain for signing links", href: "https://sendforsign.com/docs/usecase/recipientdomain" },
+    { label: "MCP quickstart", href: "https://sendforsign.com/docs/ai-agents/mcp-quickstart" },
   ],
 };
 

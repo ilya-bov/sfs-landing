@@ -1,6 +1,6 @@
 import SeoPage, { seoMetadata, type SeoPageContent } from "@/components/seo-page";
 
-const DOCS = "https://about.sendforsign.com";
+const DOCS = "https://sendforsign.com/docs";
 
 // Tool list mirrors sendforsign-api src/mcp/tools.js (19 tools). Update both together.
 const content: SeoPageContent = {

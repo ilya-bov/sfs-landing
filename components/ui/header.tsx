@@ -10,7 +10,7 @@ const menuItems = [
     { name: 'API', href: '/esignature-api' },
     { name: 'Embedded signing', href: '/embedded-esignature' },
     { name: 'AI contracts', href: '/ai-contract-generation' },
-    { name: 'Documentation', href: 'https://about.sendforsign.com/introduction' },
+    { name: 'Documentation', href: 'https://sendforsign.com/docs/introduction' },
     { name: 'Pricing', href: '/#pricing' },
     // { name: 'About', href: '#about' },
 ]
