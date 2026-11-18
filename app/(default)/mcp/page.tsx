@@ -2,7 +2,7 @@ import SeoPage, { seoMetadata, type SeoPageContent } from "@/components/seo-page
 
 const DOCS = "https://about.sendforsign.com";
 
-// Tool list mirrors sendforsign-api src/mcp/tools.js (17 tools). Update both together.
+// Tool list mirrors sendforsign-api src/mcp/tools.js (19 tools). Update both together.
 const content: SeoPageContent = {
   path: "/mcp",
   eyebrow: "MCP server",
@@ -24,6 +24,14 @@ const content: SeoPageContent = {
     {
       title: "Fields with roles",
       text: "The agent fills the fields it owns and leaves the rest to the right person: any recipient or a specific one. Recipients can change only their own fields, and only until they sign.",
+    },
+    {
+      title: "Fields in the agent's own text",
+      text: "The agent writes {{Fee=2 400 EUR}}, {{Client company@any}} or {{Signer title@jane@acme.com}} in a contract it drafts, and each becomes a real field with the right owner.",
+    },
+    {
+      title: "PDFs with signature fields",
+      text: "Upload a PDF by link or file, then place signature, date, name, email and text fields on its pages. The signed PDF carries every field where the agent put it.",
     },
     {
       title: "Tenants for your customers",
@@ -64,11 +72,15 @@ const content: SeoPageContent = {
   faq: [
     {
       q: "Which tools does the Sendforsign MCP server expose?",
-      a: "17 tools: get_connection_info, list_templates, get_template, list_contracts, get_contract, create_contract, update_contract, list_placeholders, fill_placeholders, add_recipients, list_recipients, send_for_signature, get_contract_timeline, download_contract_pdf, archive_contract, list_users and create_user. Each carries read-only or destructive hints for the client.",
+      a: "19 tools: get_connection_info, list_templates, get_template, list_contracts, get_contract, create_contract, update_contract, create_pdf_contract, place_pdf_fields, list_placeholders, fill_placeholders, add_recipients, list_recipients, send_for_signature, get_contract_timeline, download_contract_pdf, archive_contract, list_users and create_user. Each carries read-only or destructive hints for the client.",
     },
     {
       q: "Which AI apps can connect?",
       a: "Any MCP client that supports remote servers over Streamable HTTP: Claude (web, desktop and Claude Code), ChatGPT connectors, Cursor, VS Code, the OpenAI Agents SDK and others.",
+    },
+    {
+      q: "Can the agent work with PDF contracts?",
+      a: "Yes. create_pdf_contract takes a PDF by public https link or as a file, and place_pdf_fields puts signature, date signed, full name, email and text fields on its pages, in percent of the page. Recipients sign on the signing page and the fields are stamped into the signed PDF.",
     },
     {
       q: "Can the agent send a contract on its own?",
