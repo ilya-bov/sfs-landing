@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getPost, getPosts, formatDate } from "@/lib/blog";
+import { getPost, getPosts, formatDate, isPerson } from "@/lib/blog";
 
 const SITE_URL = "https://sendforsign.com";
 
@@ -50,7 +50,9 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
       datePublished: post.date,
       url,
       mainEntityOfPage: url,
-      author: { "@type": "Organization", name: post.author, url: SITE_URL },
+      author: isPerson(post.author)
+        ? { "@type": "Person", name: post.author.split(",")[0].trim(), jobTitle: post.author.split(",").slice(1).join(",").trim() || undefined, worksFor: { "@id": `${SITE_URL}/#organization` } }
+        : { "@type": "Organization", name: post.author, url: SITE_URL },
       publisher: { "@id": `${SITE_URL}/#organization` },
       image: `${SITE_URL}/opengraph-image`,
     },
@@ -74,9 +76,11 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
         <h1 className="mt-6 text-3xl font-medium leading-tight tracking-tight text-neutral-100 md:text-5xl">
           {post.title}
         </h1>
-        <time dateTime={post.date} className="mt-4 block text-sm text-white/50">
-          {formatDate(post.date)}
-        </time>
+        <p className="mt-4 text-sm text-white/50">
+          {isPerson(post.author) && <span>{post.author} · </span>}
+          <time dateTime={post.date}>{formatDate(post.date)}</time>
+          {post.draft && <span className="ml-2 rounded bg-amber-400/20 px-1.5 py-0.5 text-amber-200">draft</span>}
+        </p>
         <div
           className="blog-body mt-10 text-base leading-relaxed text-white/80"
           dangerouslySetInnerHTML={{ __html: post.html }}
