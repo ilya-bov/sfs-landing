@@ -3,7 +3,6 @@ title: "DocuSign embedded signing alternatives for platforms"
 description: "If you embed signing for many customers, the DocuSign question is less about features than about plans, branding and control. A practical look at BoldSign, Dropbox Sign, SignWell and Sendforsign."
 date: 2026-11-18
 author: "Ilia, founder of Sendforsign"
-draft: true
 ---
 
 DocuSign is the default choice for e-signature, and for good reasons: brand trust, compliance coverage, and a huge API. But if you are a platform that embeds signing for many of your own customers, you run into a different set of questions than a company signing its own contracts. Which plan includes embedding? Can you remove the vendor's brand? Can each of your customers be a separate tenant? Can your product's AI agent use it safely?

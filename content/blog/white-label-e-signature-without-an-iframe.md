@@ -3,7 +3,6 @@ title: "White-label e-signature: embedding signing in your SaaS without an ifram
 description: "Most embedded e-signature means a vendor's page in an iframe. Here is what it takes to make signing feel native to your product: your UI, your brand, your domain, and one tenant per customer."
 date: 2026-11-18
 author: "Ilia, founder of Sendforsign"
-draft: true
 ---
 
 If your product creates contracts for your customers (a booking platform, a staffing tool, an agency CRM), sooner or later someone asks for signatures inside the product. The usual answer is "embedded signing", and the usual implementation is an iframe that loads the e-signature vendor's signing page on top of your app.
